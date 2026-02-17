@@ -1,7 +1,7 @@
 "use client";
 
 import { nav_items } from "@/constants/routers";
-import { scrollToElement } from "@/heplers/scrollToElement";
+import { scrollToElement } from "@/helpers/scrollToElement";
 import { useFilterShowMenuItems } from "@/hooks/useFilterShowMenuItems";
 import { cn } from "@/lib/utils";
 import { Button } from "@/ui/button";

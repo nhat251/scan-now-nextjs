@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 import { nav_items } from "@/constants/routers";
-import { scrollToElement } from "@/heplers/scrollToElement";
+import { scrollToElement } from "@/helpers/scrollToElement";
 import { useFilterShowMenuItems } from "@/hooks/useFilterShowMenuItems";
 import { Button } from "@/ui/button";
 

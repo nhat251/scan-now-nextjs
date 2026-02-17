@@ -1,7 +1,7 @@
 import defaultAxios from "axios";
 
 export const axiosBasic = defaultAxios.create({
-  baseURL: process.env.NEXT_PUBLIC_STRAPI_URL,
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
   headers: {
     "Content-Type": "application/json",
     Accept: "*/*",
@@ -10,7 +10,7 @@ export const axiosBasic = defaultAxios.create({
 
 axiosBasic.interceptors.request.use(
   (config) => {
-    const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
+    const token = localStorage.getItem("jwt");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
