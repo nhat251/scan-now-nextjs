@@ -27,8 +27,8 @@ Ensure you have the following installed:
 1.  **Clone the repository:**
 
     ```bash
-    git clone https://github.com/nhat251/app-router-base.git
-    cd app-router-base
+    git clone https://github.com/nhat251/scan-now.git
+    cd scan-now
     ```
 
 2.  **Install dependencies:**
