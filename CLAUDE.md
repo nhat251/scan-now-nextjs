@@ -6,6 +6,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 `scan-now` — A Next.js 16 (App Router) portfolio site template for Nguyen Sinh Nhat. Built with TypeScript, Tailwind CSS v4, and shadcn/ui (new-york style).
 
+## Important Rules (Read First)
+
+### SSR / Server Components (Next.js App Router)
+- All components are **Server Components by default** — do NOT add `"use client"` unless you need browser APIs (`useState`, `useEffect`, event handlers, refs)
+- Push `"use client"` boundaries as deep as possible. Compose: Server Component (data fetch) → Client Component (interactivity)
+- Data fetching: prefer `async` Server Components over client-side fetching for initial data
+- Never import `"use client"` components directly into server-only code (e.g., `route.ts`, server actions) without proper boundary
+- Use `next-intl/server` functions (`getMessages`, `getTranslations`) only in Server Components or `async` functions
+
+### Client/Server Boundary Pattern
+- Server-side providers: `NextIntlProvider` (`src/providers/global/next-intl.tsx` — uses `await getMessages()` from `next-intl/server`)
+- Client-side providers: `ReactQueryProvider`, `ThemeProvider` (marked `"use client"`)
+- `axiosBasic` (`src/services/axiosBasic.tsx`) uses `localStorage` → **browser-only** → must NOT run in server context
+
+### Custom Mutation Pattern
+- Use `useMutation` wrapper (`src/hooks/useMutation.tsx`) for all API mutations — it auto-manages loading spinner and error toasts
+- Config: `hasLoading: true` shows global loading, `onSuccess`/`onError` for custom callbacks
+
 ## Essential Commands
 
 ```bash
@@ -64,7 +82,9 @@ ThemeProvider → NextIntlProvider → ReactQueryProvider → Header → childre
 
 ### Code Style Rules
 
-- **No default exports** except for Next.js pages/layouts/components
+- **No default exports** except for Next.js pages/layouts/components and `useMutation` hook
+- **Import order** (enforced by `simple-import-sort`): react/next → external packages → `@/` aliases → relative imports → styles
+- **`import type`** for type-only imports (`@typescript-eslint/consistent-type-imports` enforced)
 - **No parent relative imports** (e.g., `../../`), use `@/` path aliases
 - Conventional Commits format (feat, fix, docs, refactor, etc.)
 - Pre-commit: lint-staged runs `pnpm lint` on staged `.ts`/`.tsx`/`.js` files
