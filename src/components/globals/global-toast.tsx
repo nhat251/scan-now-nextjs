@@ -1,6 +1,5 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import type * as React from "react";
 import type { ExternalToast } from "sonner";
 import { toast, Toaster } from "sonner";
@@ -52,11 +51,8 @@ export function showToast(
 }
 
 export function GlobalToast() {
-  const { theme } = useTheme();
-
   return (
     <Toaster
-      theme={theme as "light" | "dark"}
       className="toaster group whitespace-pre-line"
       toastOptions={{
         classNames: {
