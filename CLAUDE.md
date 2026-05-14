@@ -17,7 +17,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Client/Server Boundary Pattern
 - Server-side providers: `NextIntlProvider` (`src/providers/global/next-intl.tsx` — uses `await getMessages()` from `next-intl/server`)
-- Client-side providers: `ReactQueryProvider`, `ThemeProvider` (marked `"use client"`)
+- Client-side providers: `ReactQueryProvider` (marked `"use client"`)
+- No theme switching — light-only design (no `next-themes`, no `ThemeProvider`)
 - `axiosBasic` (`src/services/axiosBasic.tsx`) uses `localStorage` → **browser-only** → must NOT run in server context
 
 ### Custom Mutation Pattern
@@ -46,7 +47,7 @@ src/
 ├── components/       # Atomic Design: atoms/ molecules/ organisms/ globals/ icons/ ui/
 ├── constants/        # Site config, route paths, style constants
 ├── data/             # Static data, SEO metadata, toast messages
-├── helpers/          # Utility functions (slug, time, highlight, scroll)
+├── helpers/          # Utility functions (slug, time, scroll)
 ├── hooks/            # React hooks + TanStack Query mutations/queries
 ├── i18n/             # next-intl (Vietnamese default, English supported)
 ├── lib/              # Core utilities: cn(), uuid(), logging
@@ -75,7 +76,7 @@ src/
 - Mutations organized in `src/hooks/mutations/`, queries in `src/hooks/queries/`
 
 **Providers (in `src/app/layout.tsx`):**
-ThemeProvider → NextIntlProvider → ReactQueryProvider → Header → children → Footer → ScrollToTopButton → GlobalToast → GlobalLoading
+NextIntlProvider → ReactQueryProvider → Header → children → Footer → ScrollToTopButton → GlobalToast → GlobalLoading
 
 **Path Aliases (tsconfig.json):**
 `@/*` → `src/*`, `@/components/*` → `src/components/*`, `@/ui/*` → `src/components/ui/*`, `@/hooks/*` → `src/hooks/*`, `@/lib/*` → `src/lib/*`
@@ -92,6 +93,7 @@ ThemeProvider → NextIntlProvider → ReactQueryProvider → Header → childre
 ### Key Dependencies
 
 - **UI:** shadcn/ui (new-york), Radix UI, Tailwind CSS v4, lucide-react
+- **Theme:** next-themes (installed but not in use)
 - **Forms:** React Hook Form + Zod
 - **Auth:** next-auth v4 (Google OAuth)
 - **i18n:** next-intl

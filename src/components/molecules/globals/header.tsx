@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Logo } from "@/components/icons/logo";
 import { DesktopNav } from "@/components/molecules/globals/desktop-nav";
 import { MobileNav } from "@/components/molecules/globals/mobile-nav";
-import { ModeToggle } from "@/components/ui/toggle-mode";
 
 export const Header = () => {
   return (
@@ -24,7 +23,6 @@ export const Header = () => {
           <DesktopNav />
 
           <div className="flex items-center gap-4">
-            <ModeToggle />
             <MobileNav />
           </div>
         </div>

@@ -10,7 +10,6 @@ import { SITE_CONFIG } from "@/constants/site";
 import { APP_LAYOUT_METADATA } from "@/data/metadataSEO";
 import { NextIntlProvider } from "@/providers/global/next-intl";
 import { ReactQueryProvider } from "@/providers/global/query-client-provider";
-import { ThemeProvider } from "@/providers/global/theme-provider";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 import "@/styles/globals.css";
@@ -40,18 +39,16 @@ export default function RootLayout({
   return (
     <html lang={SITE_CONFIG.defaultLocale} suppressHydrationWarning>
       <body className={`${inter.variable} font-sans antialiased`}>
-        <ThemeProvider attribute="class" disableTransitionOnChange>
-          <NextIntlProvider>
-            <ReactQueryProvider>
-              <Header />
-              {children}
-              <Footer />
-              <ScrollToTopButton />
-            </ReactQueryProvider>
-            <GlobalToast />
-            <GlobalLoading />
-          </NextIntlProvider>
-        </ThemeProvider>
+        <NextIntlProvider>
+          <ReactQueryProvider>
+            <Header />
+            {children}
+            <Footer />
+            <ScrollToTopButton />
+          </ReactQueryProvider>
+          <GlobalToast />
+          <GlobalLoading />
+        </NextIntlProvider>
         {process.env.GOOGLE_ANALYTICS_MEASUREMENT_ID && (
           <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_MEASUREMENT_ID} />
         )}
