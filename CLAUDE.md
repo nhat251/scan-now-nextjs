@@ -9,6 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Important Rules (Read First)
 
 ### SSR / Server Components (Next.js App Router)
+
 - All components are **Server Components by default** — do NOT add `"use client"` unless you need browser APIs (`useState`, `useEffect`, event handlers, refs)
 - Push `"use client"` boundaries as deep as possible. Compose: Server Component (data fetch) → Client Component (interactivity)
 - Data fetching: prefer `async` Server Components over client-side fetching for initial data
@@ -16,12 +17,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Use `next-intl/server` functions (`getMessages`, `getTranslations`) only in Server Components or `async` functions
 
 ### Client/Server Boundary Pattern
+
 - Server-side providers: `NextIntlProvider` (`src/providers/global/next-intl.tsx` — uses `await getMessages()` from `next-intl/server`)
 - Client-side providers: `ReactQueryProvider` (marked `"use client"`)
-- No theme switching — light-only design (no `next-themes`, no `ThemeProvider`)
 - `axiosBasic` (`src/services/axiosBasic.tsx`) uses `localStorage` → **browser-only** → must NOT run in server context
 
 ### Custom Mutation Pattern
+
 - Use `useMutation` wrapper (`src/hooks/useMutation.tsx`) for all API mutations — it auto-manages loading spinner and error toasts
 - Config: `hasLoading: true` shows global loading, `onSuccess`/`onError` for custom callbacks
 
@@ -61,6 +63,7 @@ src/
 ### Key Patterns
 
 **Component Organization:** Atomic Design methodology.
+
 - `atoms/` → smallest units (dividers, buttons)
 - `molecules/` → composed groups (modals, nav items)
 - `organisms/` → complex compositions (currently empty)
@@ -68,10 +71,12 @@ src/
 - `ui/` → shadcn/ui primitives
 
 **State Management:**
+
 - Zustand for global state (`src/stores/`) — `global` store (loading, toasts), `user` store (auth)
 - TanStack Query v5 for server state with custom `useMutation` wrapper (`src/hooks/useMutation.tsx`) that auto-manages loading spinner and error toasts
 
 **API Layer:**
+
 - Axios instance at `src/services/axiosBasic.tsx` with automatic JWT token injection
 - Mutations organized in `src/hooks/mutations/`, queries in `src/hooks/queries/`
 
@@ -93,7 +98,6 @@ NextIntlProvider → ReactQueryProvider → Header → children → Footer → S
 ### Key Dependencies
 
 - **UI:** shadcn/ui (new-york), Radix UI, Tailwind CSS v4, lucide-react
-- **Theme:** next-themes (installed but not in use)
 - **Forms:** React Hook Form + Zod
 - **Auth:** next-auth v4 (Google OAuth)
 - **i18n:** next-intl
