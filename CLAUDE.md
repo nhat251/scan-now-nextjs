@@ -22,10 +22,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Client-side providers: `ReactQueryProvider` (marked `"use client"`)
 - `axiosBasic` (`src/services/axiosBasic.tsx`) uses `localStorage` → **browser-only** → must NOT run in server context
 
-### Custom Mutation Pattern
+### Custom Hooks Pattern
 
-- Use `useMutation` wrapper (`src/hooks/useMutation.tsx`) for all API mutations — it auto-manages loading spinner and error toasts
+**Mutations** (`src/hooks/useMutation.tsx`):
+- Use for all API mutations — auto-manages loading spinner and error toasts
 - Config: `hasLoading: true` shows global loading, `onSuccess`/`onError` for custom callbacks
+
+**Queries** (`src/hooks/useQuery.ts`):
+- Use for all API queries — same loading/toast/notify pattern as `useMutation`
+- Config: `hasLoading`, `notifySuccess`/`notifyError` (message + duration), `onSuccess`/`onError`, `enabled`
 
 ## Essential Commands
 
@@ -79,9 +84,11 @@ src/
 
 - Axios instance at `src/services/axiosBasic.tsx` with automatic JWT token injection
 - Mutations organized in `src/hooks/mutations/`, queries in `src/hooks/queries/`
+- **Query keys:** Centralized in `src/constants/queryKeys.ts` — use constants for `queryKey` arrays, never inline strings
+- **Query hooks:** Follow `useSampleQuery` pattern — export a typed hook wrapping `useQuery` with `queryKey`, `queryFn`, optional `select`
 
 **Providers (in `src/app/layout.tsx`):**
-NextIntlProvider → ReactQueryProvider → Header → children → Footer → ScrollToTopButton → GlobalToast → GlobalLoading
+`NextIntlProvider` wraps everything inside. `ReactQueryProvider` wraps `Header → children → Footer → ScrollToTopButton`. `GlobalToast` and `GlobalLoading` are inside `NextIntlProvider` but outside `ReactQueryProvider`.
 
 **Path Aliases (tsconfig.json):**
 `@/*` → `src/*`, `@/components/*` → `src/components/*`, `@/ui/*` → `src/components/ui/*`, `@/hooks/*` → `src/hooks/*`, `@/lib/*` → `src/lib/*`
@@ -107,4 +114,37 @@ NextIntlProvider → ReactQueryProvider → Header → children → Footer → S
 
 ### React Compiler
 
-Enabled via `babel-plugin-react-compiler` in `next.config.ts`.
+Enabled via native `reactCompiler: true` in `next.config.ts` (Next.js 16).
+
+### Next.js Config Notes
+
+- `output: "standalone"` — Docker-friendly standalone output
+- Image `remotePatterns`: Strapi CMS (`localhost:1337/uploads/**`), Google avatars (`lh3.googleusercontent.com`)
+
+### Environment Variables
+
+- `NEXT_PUBLIC_API_URL` — Backend API base URL (used by `axiosBasic`)
+- `GOOGLE_ANALYTICS_MEASUREMENT_ID` — Optional GA tracking ID
+
+### Utilities
+
+**Helpers (`src/helpers/`):**
+- `createSlug.tsx` — string → URL-safe slug
+- `scrollToElement.ts` — smooth scroll utilities
+- `time.tsx` — time formatting
+
+**Lib (`src/lib/`):**
+- `utils.ts` — `cn()` (clsx + tailwind-merge), `uuid()`
+- `log.ts` — Consola-based tagged logging (`Log.info()`, `Log.error()`, etc.)
+
+### Query Keys
+
+Centralized in `src/constants/queryKeys.ts`. Use these constants for `queryKey` arrays — never inline strings.
+
+### Query Hook Pattern
+
+Follow `src/hooks/queries/useSampleQuery.tsx` — export a typed hook wrapping `useQuery`:
+- `queryKey` from `QUERY_KEY` constants
+- `queryFn` using `axiosBasic`
+- `select: (res) => res.data` for data extraction
+- Optional `hasLoading`, `notifySuccess`/`notifyError`, `onSuccess`/`onError` callbacks
