@@ -1,7 +1,7 @@
 import type { ToasterProps } from "sonner";
 import { create } from "zustand";
 
-import { showToast } from "@/components/globals/global-toast";
+import { showToast } from "@/components/molecules/globals/global-toast";
 
 export const DEFAULT_DURATION_NOTIFICATION = 2000;
 export const DEFAULT_POSITION_NOTIFICATION: ToasterProps["position"] = "top-right";

@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 
 import { ScrollToTopButton } from "@/components/atoms/scroll-to-top-button";
-import { GlobalLoading } from "@/components/globals/global-loading";
-import { GlobalToast } from "@/components/globals/global-toast";
 import { Footer } from "@/components/molecules/globals/footer";
+import { GlobalLoading } from "@/components/molecules/globals/global-loading";
+import { GlobalToast } from "@/components/molecules/globals/global-toast";
 import { Header } from "@/components/molecules/globals/header";
 import { SITE_CONFIG } from "@/constants/site";
 import { APP_LAYOUT_METADATA } from "@/data/metadataSEO";
