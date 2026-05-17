@@ -10,7 +10,8 @@
   --card-foreground: #0f172a;
   --popover: #ffffff;
   --popover-foreground: #0f172a;
-  --primary: #2563eb;
+  --brand-primary: #FF6B35;
+  --primary: var(--brand-primary);
   --primary-foreground: #ffffff;
   --secondary: #06b6d4;
   --secondary-foreground: #ffffff;
@@ -22,7 +23,7 @@
   --destructive-foreground: #ffffff;
   --border: #e2e8f0;
   --input: #e2e8f0;
-  --ring: #2563eb;
+  --ring: var(--brand-primary);
   --success: #dcfce7;
   --success-foreground: #166534;
   --warning: #fef3c7;
@@ -44,7 +45,6 @@
   --logo-background: #4338ca;
 
   --hero-gradient: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
-  --primary-blue: #2563eb;
   --success-background: #dcfce7;
   --success-text: #166534;
 }
@@ -88,7 +88,6 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  --color-primary-blue: var(--primary-blue);
   --color-success-background: var(--success-background);
   --color-success-text: var(--success-text);
 }

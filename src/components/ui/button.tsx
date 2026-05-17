@@ -11,11 +11,7 @@ const buttonVariants = cva(
       variant: {
         none: "",
         default:
-          "bg-primary text-secondary-foreground shadow-[0_4px_12px_rgba(15,23,42,0.15)] hover:text-primary-blue hover:shadow-[0_8px_20px_rgba(15,23,42,0.25)] dark:bg-primary-blue dark:hover:text-white",
-        defaultWithTextWhite:
-          "bg-primary text-white shadow-[0_4px_12px_rgba(15,23,42,0.15)] hover:shadow-[0_8px_20px_rgba(15,23,42,0.25)] dark:bg-primary-blue dark:hover:text-white",
-        primaryBlue:
-          "bg-primary-blue text-white shadow-[0_4px_12px_rgba(37,99,235,0.25)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.35)]",
+          "bg-primary text-white shadow-[0_4px_12px_rgba(255,107,53,0.25)] hover:bg-primary/90 hover:text-white hover:shadow-[0_6px_20px_rgba(255,107,53,0.35)]",
         secondary:
           "bg-secondary-foreground text-white shadow-[0_4px_12px_rgba(100,116,139,0.15)] hover:shadow-[0_6px_16px_rgba(100,116,139,0.25)]",
         accent:
