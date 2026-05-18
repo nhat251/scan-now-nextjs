@@ -9,20 +9,38 @@ export type navType = {
   isPrivate: boolean;
 };
 
+const createHomePath = () => `${BASE_URL.HOME}`;
+
 export const nav_items: navType[] = [
   {
-    id: "home",
-    text: "Home",
+    id: "benefits",
+    text: "Tính năng",
     path: BASE_URL.HOME,
-    createPath: () => `${BASE_URL.HOME}`,
+    createPath: createHomePath,
     isShow: true,
     isPrivate: false,
   },
   {
-    id: "login",
-    text: "Login",
-    path: BASE_URL.LOGIN,
-    createPath: () => `${BASE_URL.LOGIN}`,
+    id: "feature-details",
+    text: "Quy trình",
+    path: BASE_URL.HOME,
+    createPath: createHomePath,
+    isShow: true,
+    isPrivate: false,
+  },
+  {
+    id: "pricing",
+    text: "Bảng giá",
+    path: BASE_URL.HOME,
+    createPath: createHomePath,
+    isShow: true,
+    isPrivate: false,
+  },
+  {
+    id: "final-cta",
+    text: "Liên hệ",
+    path: BASE_URL.HOME,
+    createPath: createHomePath,
     isShow: true,
     isPrivate: false,
   },

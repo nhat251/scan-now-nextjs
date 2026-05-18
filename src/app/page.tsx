@@ -1,11 +1,7 @@
-import { cn } from "@/lib/utils";
+import { SalesLanding } from "@/components/organisms/sales-landing";
 
 const RootPage = () => {
-  return (
-    <main className={cn("flex flex-col")}>
-      <h1>Home</h1>
-    </main>
-  );
+  return <SalesLanding />;
 };
 
 export default RootPage;
