@@ -1,0 +1,225 @@
+{
+  "global": {
+    "brand": "Scan Now",
+    "header": {
+      "startNow": "Get Started"
+    },
+    "locale": {
+      "label": "Language",
+      "selectAriaLabel": "Select language",
+      "vi": "Vietnamese",
+      "en": "English",
+      "short": {
+        "vi": "VI",
+        "en": "EN"
+      }
+    },
+    "mobileNav": {
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "startNow": "Get Started"
+    },
+    "nav": {
+      "features": "Features",
+      "process": "Process",
+      "pricing": "Pricing",
+      "contact": "Contact"
+    },
+    "footer": {
+      "description": "Smart ordering solution for modern restaurants.",
+      "columns": {
+        "company": "Company",
+        "legal": "Legal",
+        "support": "Support"
+      },
+      "links": {
+        "about": "About us",
+        "careers": "Careers",
+        "blog": "Blog",
+        "terms": "Terms",
+        "privacy": "Privacy",
+        "customerSupport": "Customer support",
+        "helpCenter": "Help center"
+      }
+    }
+  },
+  "landing": {
+    "hero": {
+      "badge": "F&B trend 2026",
+      "title": {
+        "line1": "The smartest",
+        "highlight": "restaurant ordering",
+        "line2": "management software"
+      },
+      "description": "Over 300,000 F&B businesses use Scan Now to speed up service, reduce losses, and deliver a modern ordering experience.",
+      "ctaPrimary": "Start free trial",
+      "ctaSecondary": "Explore",
+      "metrics": {
+        "businesses": "businesses using",
+        "partners": "new partners each month",
+        "setupValue": "15 min",
+        "setup": "to launch menu",
+        "support": "technical support"
+      }
+    },
+    "trusted": {
+      "title": "Thousands of restaurant owners have transformed operations with Scan Now"
+    },
+    "benefits": {
+      "title": "Outstanding benefits",
+      "description": "A unified solution from ordering and kitchen operations to revenue management helps your restaurant grow sustainably.",
+      "items": {
+        "speed": {
+          "title": "Faster service",
+          "description": "Guests scan and order directly, reducing manual order-taking time during peak hours."
+        },
+        "cost": {
+          "title": "Lower costs",
+          "description": "Cut printed menu costs and streamline operations while keeping a professional customer experience."
+        },
+        "management": {
+          "title": "Smarter management",
+          "description": "Track revenue, table service, and staff performance in real time."
+        }
+      }
+    },
+    "featureDetails": {
+      "heading": {
+        "eyebrow": "Complete ecosystem",
+        "title": "Everything you need to run professionally",
+        "description": "From digital menus and staff management to revenue analytics, everything is in one unified platform."
+      },
+      "cards": {
+        "digitalMenu": {
+          "title": "Digital menu",
+          "description": "Update seasonal dishes in seconds without reprinting menus."
+        },
+        "analytics": {
+          "title": "Real-time analytics",
+          "description": "See best sellers, peak hours, and customer return rates clearly."
+        },
+        "staff": {
+          "title": "Staff management",
+          "description": "Role-based permissions, performance tracking, and intuitive scheduling."
+        },
+        "loyalty": {
+          "title": "Customer loyalty",
+          "description": "Create points and automated promotions to increase repeat visits."
+        }
+      },
+      "paymentCta": {
+        "title": "Ready to integrate online payments?",
+        "description": "Supports MoMo, ZaloPay, ShopeePay, and all Vietnamese banks. Transactions are recorded instantly in operations reports.",
+        "button": "Connect now"
+      },
+      "process": {
+        "eyebrow": "Process",
+        "title": "Launch in 3 simple steps",
+        "description": "No infrastructure changes required, your team can go live the same day.",
+        "stepLabel": "Step",
+        "steps": {
+          "scan": {
+            "title": "Guests scan the QR code at the table",
+            "description": "Display a mobile-optimized menu with images, descriptions, and dish options."
+          },
+          "order": {
+            "title": "Order and pay flexibly",
+            "description": "Support dine-in ordering, online payment, or counter payment based on customer needs."
+          },
+          "sync": {
+            "title": "Kitchen and cashier receive orders instantly",
+            "description": "Orders sync in real time, reducing manual communication errors."
+          }
+        }
+      }
+    },
+    "testimonials": {
+      "title": "What our partners say",
+      "description": "Real outcomes from F&B businesses using Scan Now in daily operations.",
+      "items": {
+        "minh": {
+          "name": "Minh Tran",
+          "role": "Grill restaurant owner in District 7",
+          "quote": "Since using Scan Now, our service team handles orders much faster and customers are happier because they wait less."
+        },
+        "lan": {
+          "name": "Lan Huong",
+          "role": "Cafe chain manager in Hanoi",
+          "quote": "Real-time reports help me make better purchasing decisions and cut waste by nearly 20% in just two months."
+        },
+        "hoang": {
+          "name": "Hoang Nam",
+          "role": "Food court founder",
+          "quote": "What I love most is the speed of deployment. In one afternoon, every stall had a synchronized QR menu."
+        }
+      }
+    },
+    "pricing": {
+      "title": "Flexible plans",
+      "description": "Choose based on your current operating scale and expand as your restaurant grows.",
+      "plans": {
+        "basic": {
+          "name": "Basic",
+          "period": "/month",
+          "cta": "Choose this plan",
+          "features": {
+            "menu": "Online menu for 50 dishes",
+            "tables": "Up to 20 tables",
+            "report": "Basic reports"
+          }
+        },
+        "premium": {
+          "name": "Premium Care",
+          "period": "/month",
+          "cta": "Try 14 days",
+          "badge": "Most popular",
+          "features": {
+            "menu": "Unlimited menu items",
+            "tables": "Unlimited tables",
+            "payment": "Online payment",
+            "support": "24/7 support"
+          }
+        },
+        "enterprise": {
+          "name": "Enterprise",
+          "price": "Contact us",
+          "cta": "Send request",
+          "features": {
+            "branding": "Custom brand experience",
+            "api": "API integration with existing POS",
+            "chain": "Multi-branch management"
+          }
+        }
+      }
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "description": "Common questions before launching at your restaurant.",
+      "items": {
+        "setup": {
+          "question": "How long does setup take?",
+          "answer": "It only takes 15–30 minutes to upload your menu and create your first QR code. Our technical team supports you so your restaurant can run the same day."
+        },
+        "hardware": {
+          "question": "Do I need extra hardware?",
+          "answer": "No. Scan Now runs on the web — you only need your existing phone or tablet to manage orders."
+        },
+        "pricing": {
+          "question": "Does the 500k/month price include everything?",
+          "answer": "The plan includes storage infrastructure, security, and new feature updates. There are no hidden fees."
+        },
+        "support": {
+          "question": "How does technical support work if issues occur?",
+          "answer": "Our support team is available 24/7 via hotline, Zalo, and email. Critical issues are prioritized and handled remotely immediately."
+        }
+      }
+    },
+    "finalCta": {
+      "title": "Ready to unlock restaurant revenue growth?",
+      "description": "Join more than 300,000 restaurant owners who trust Scan Now. Start your 14-day free trial today.",
+      "primary": "Start free now",
+      "secondary": "Contact sales",
+      "disclaimer": "No credit card required. Cancel anytime."
+    }
+  }
+}

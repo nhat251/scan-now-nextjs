@@ -2,27 +2,45 @@ import { BASE_URL } from "@/constants/url";
 
 export type navType = {
   id: string;
-  text: string;
+  labelKey: string;
   path: string;
   createPath: () => string;
   isShow: boolean;
   isPrivate: boolean;
 };
 
+const createHomePath = () => `${BASE_URL.HOME}`;
+
 export const nav_items: navType[] = [
   {
-    id: "home",
-    text: "Home",
+    id: "benefits",
+    labelKey: "global.nav.features",
     path: BASE_URL.HOME,
-    createPath: () => `${BASE_URL.HOME}`,
+    createPath: createHomePath,
     isShow: true,
     isPrivate: false,
   },
   {
-    id: "login",
-    text: "Login",
-    path: BASE_URL.LOGIN,
-    createPath: () => `${BASE_URL.LOGIN}`,
+    id: "feature-details",
+    labelKey: "global.nav.process",
+    path: BASE_URL.HOME,
+    createPath: createHomePath,
+    isShow: true,
+    isPrivate: false,
+  },
+  {
+    id: "pricing",
+    labelKey: "global.nav.pricing",
+    path: BASE_URL.HOME,
+    createPath: createHomePath,
+    isShow: true,
+    isPrivate: false,
+  },
+  {
+    id: "final-cta",
+    labelKey: "global.nav.contact",
+    path: BASE_URL.HOME,
+    createPath: createHomePath,
     isShow: true,
     isPrivate: false,
   },

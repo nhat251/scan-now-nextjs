@@ -87,7 +87,7 @@ export const AlertModal = ({
           )}
           {positiveShow && (
             <Button
-              variant="primaryBlue"
+              variant="default"
               onClick={onPositive}
               className="shadow-primary/20 flex-1 shadow-lg sm:flex-none"
             >

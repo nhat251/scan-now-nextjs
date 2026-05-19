@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Menu, X } from "lucide-react";
 
 import { nav_items } from "@/constants/routers";
@@ -11,37 +12,46 @@ import { Button } from "@/ui/button";
 export const MobileNav = () => {
   const [menuState, setMenuState] = useState(false);
   const menu = useFilterShowMenuItems(nav_items);
+  const t = useTranslations();
 
   return (
-    <div className="md:hidden">
+    <div className="relative md:hidden">
       <Button
         onClick={() => setMenuState(!menuState)}
-        variant={"none"}
-        aria-label={menuState ? "Close Menu" : "Open Menu"}
+        variant="none"
+        className="text-on-surface"
+        aria-label={menuState ? t("global.mobileNav.closeMenu") : t("global.mobileNav.openMenu")}
       >
         {menuState ? <X className="size-6" /> : <Menu className="size-6" />}
       </Button>
 
-      {/* Mobile Menu Overlay */}
       {menuState && (
-        <div className="bg-card/95 animate-in slide-in-from-top-5 fade-in absolute top-16 right-0 left-0 h-screen border-t backdrop-blur-sm duration-200">
-          <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-            <nav className="flex flex-col space-y-4">
-              {menu.map((link) => (
-                <Button
-                  key={link.id}
-                  variant="none"
-                  onClick={() => {
-                    scrollToElement(link.id);
-                    setMenuState(false);
-                  }}
-                  className="text-muted-foreground hover:text-foreground block w-full justify-start py-2 text-left text-sm font-medium transition-colors"
-                >
-                  {link.text}
-                </Button>
-              ))}
-            </nav>
-          </div>
+        <div className="bg-surface/95 animate-in slide-in-from-top-2 fade-in border-outline-variant/50 absolute top-14 right-0 z-50 w-72 rounded-2xl border p-4 shadow-xl backdrop-blur-md duration-200">
+          <nav className="flex flex-col gap-2">
+            {menu.map((link) => (
+              <Button
+                key={link.id}
+                variant="none"
+                onClick={() => {
+                  scrollToElement(link.id);
+                  setMenuState(false);
+                }}
+                className="text-on-surface-variant hover:text-primary hover:bg-surface-container-low w-full justify-start rounded-xl px-4 py-3 text-left text-sm font-semibold"
+              >
+                {t(link.labelKey as Parameters<typeof t>[0])}
+              </Button>
+            ))}
+            <Button
+              size="sm"
+              className="mt-2 w-full"
+              onClick={() => {
+                scrollToElement("final-cta");
+                setMenuState(false);
+              }}
+            >
+              {t("global.mobileNav.startNow")}
+            </Button>
+          </nav>
         </div>
       )}
     </div>

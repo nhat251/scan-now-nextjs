@@ -1,11 +1,9 @@
-import { cn } from "@/lib/utils";
+import { redirect } from "next/navigation";
+
+import { SITE_CONFIG } from "@/constants/site";
 
 const RootPage = () => {
-  return (
-    <main className={cn("flex flex-col")}>
-      <h1>Home</h1>
-    </main>
-  );
+  redirect(`/${SITE_CONFIG.defaultLocale}`);
 };
 
 export default RootPage;

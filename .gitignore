@@ -49,3 +49,5 @@ ai-docs
 .mcp.json
 
 .claude
+
+.playwright-mcp
