@@ -6,7 +6,7 @@ import { MobileNav } from "@/components/molecules/globals/mobile-nav";
 
 export const Header = () => {
   return (
-    <header className="border-outline-variant/50 bg-surface/90 sticky top-0 z-50 w-full border-b backdrop-blur-md">
+    <header className="border-outline-variant/50 bg-surface/90 fixed top-0 z-50 w-full border-b backdrop-blur-md">
       <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 md:px-8 lg:px-10">
         <Logo size={20} fill />
 

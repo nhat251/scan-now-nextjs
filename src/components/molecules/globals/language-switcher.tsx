@@ -58,7 +58,7 @@ export const LanguageSwitcher = () => {
       >
         <SelectValue />
       </SelectTrigger>
-      <SelectContent align="end">
+      <SelectContent align="end" position="popper">
         <SelectItem value="vi">VI</SelectItem>
         <SelectItem value="en">EN</SelectItem>
       </SelectContent>
