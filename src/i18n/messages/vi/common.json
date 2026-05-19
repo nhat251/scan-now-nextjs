@@ -43,6 +43,11 @@
       }
     }
   },
+  "seo": {
+    "title": "Nguyen Sinh Nhat | Nhà phát triển Fullstack",
+    "description": "Portfolio của Nguyen Sinh Nhat - Nhà phát triển Fullstack với chuyên môn về React, Next.js, Node.js, TypeScript và các công nghệ web hiện đại. Khám phá các dự án, kinh nghiệm và kỹ năng.",
+    "ogImageAlt": "Nguyen Sinh Nhat - Portfolio Nhà phát triển Fullstack"
+  },
   "landing": {
     "hero": {
       "badge": "Xu hướng ẩm thực 2026",

@@ -43,6 +43,11 @@
       }
     }
   },
+  "seo": {
+    "title": "Nguyen Sinh Nhat | Fullstack Developer",
+    "description": "Portfolio of Nguyen Sinh Nhat - Fullstack Developer with expertise in React, Next.js, Node.js, TypeScript, and modern web technologies. Explore projects, experience, and skills.",
+    "ogImageAlt": "Nguyen Sinh Nhat - Fullstack Developer Portfolio"
+  },
   "landing": {
     "hero": {
       "badge": "F&B trend 2026",

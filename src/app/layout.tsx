@@ -1,7 +1,6 @@
-import type { Metadata, Viewport } from "next";
+import type { Viewport } from "next";
 import { Inter } from "next/font/google";
 
-import { APP_LAYOUT_METADATA } from "@/data/metadataSEO";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 import "@/styles/globals.css";
@@ -12,12 +11,10 @@ const inter = Inter({
   display: "swap",
 });
 
-export const metadata: Metadata = APP_LAYOUT_METADATA;
-
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
+    { media: "(prefers-color-scheme: light)", color: "#FFD151" },
+    { media: "(prefers-color-scheme: dark)", color: "#FFD151" },
   ],
   width: "device-width",
   initialScale: 1,
