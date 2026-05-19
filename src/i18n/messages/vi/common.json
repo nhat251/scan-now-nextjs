@@ -44,9 +44,9 @@
     }
   },
   "seo": {
-    "title": "Nguyen Sinh Nhat | Nhà phát triển Fullstack",
-    "description": "Portfolio của Nguyen Sinh Nhat - Nhà phát triển Fullstack với chuyên môn về React, Next.js, Node.js, TypeScript và các công nghệ web hiện đại. Khám phá các dự án, kinh nghiệm và kỹ năng.",
-    "ogImageAlt": "Nguyen Sinh Nhat - Portfolio Nhà phát triển Fullstack"
+    "title": "Scan Now — Phần mềm gọi món QR thông minh cho nhà hàng",
+    "description": "Scan Now giúp hơn 300.000 nhà hàng F&B tăng tốc phục vụ, giảm thất thất và tạo trải nghiệm gọi món hiện đại. Khách quét QR tại bàn, gọi món và thanh toán trực tiếp — setup chỉ 15 phút.",
+    "ogImageAlt": "Scan Now — Phần mềm gọi món QR thông minh cho nhà hàng"
   },
   "landing": {
     "hero": {

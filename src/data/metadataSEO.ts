@@ -4,7 +4,7 @@ import type { SupportedLocale } from "@/constants/site";
 import { SITE_CONFIG } from "@/constants/site";
 
 // ============================================================================
-// LOCALE-SPECIFIC METADATA
+// LOCALE-SPECIFIC METADATA — Scan Now F&B ordering platform
 // ============================================================================
 
 const LOCALE_METADATA: Record<SupportedLocale, {
@@ -19,31 +19,31 @@ const LOCALE_METADATA: Record<SupportedLocale, {
   canonicalUrl: string;
 }> = {
   vi: {
-    title: "Nguyen Sinh Nhat | Nhà phát triển Fullstack",
+    title: "Scan Now — Phần mềm gọi món QR thông minh cho nhà hàng",
     description:
-      "Portfolio của Nguyen Sinh Nhat - Nhà phát triển Fullstack với chuyên môn về React, Next.js, Node.js, TypeScript và các công nghệ web hiện đại. Khám phá các dự án, kinh nghiệm và kỹ năng.",
-    ogTitle: "Nguyen Sinh Nhat | Nhà phát triển Fullstack",
+      "Scan Now giúp hơn 300.000 nhà hàng F&B tăng tốc phục vụ, giảm thất thoát và tạo trải nghiệm gọi món hiện đại. Khách quét QR tại bàn, gọi món và thanh toán trực tiếp — setup chỉ 15 phút.",
+    ogTitle: "Scan Now — Giải pháp gọi món thông minh cho nhà hàng hiện đại",
     ogDescription:
-      "Portfolio của Nguyen Sinh Nhat - Chuyên gia phát triển web với React, Next.js và các công nghệ hiện đại.",
+      "Tăng tốc phục vụ, giảm thất thoát và nâng cao trải nghiệm khách hàng với phần mềm gọi món QR Scan Now. Dùng thử miễn phí 14 ngày.",
     ogLocale: "vi_VN",
-    twitterTitle: "Nguyen Sinh Nhat | Nhà phát triển Fullstack",
+    twitterTitle: "Scan Now — Phần mềm gọi món QR cho nhà hàng F&B",
     twitterDescription:
-      "Portfolio của Nguyen Sinh Nhat - Chuyên gia phát triển web với React, Next.js và các công nghệ hiện đại.",
-    ogImageAlt: "Nguyen Sinh Nhat - Portfolio Nhà phát triển Fullstack",
+      "Hơn 300.000 nhà hàng tin dùng. Quét QR, gọi món, thanh toán — setup 15 phút. Dùng thử miễn phí 14 ngày.",
+    ogImageAlt: "Scan Now — Phần mềm gọi món QR thông minh cho nhà hàng",
     canonicalUrl: `${SITE_CONFIG.baseUrl}/vi`,
   },
   en: {
-    title: "Nguyen Sinh Nhat | Fullstack Developer",
+    title: "Scan Now — Smart QR Ordering Software for Restaurants",
     description:
-      "Portfolio of Nguyen Sinh Nhat - Fullstack Developer with expertise in React, Next.js, Node.js, TypeScript, and modern web technologies. Explore projects, experience, and skills.",
-    ogTitle: "Nguyen Sinh Nhat | Fullstack Developer",
+      "Scan Now helps 300,000+ F&B businesses speed up service, reduce losses, and deliver a modern ordering experience. Guests scan QR at table, order and pay directly — setup in 15 minutes.",
+    ogTitle: "Scan Now — Smart Restaurant Ordering Management Software",
     ogDescription:
-      "Portfolio of Nguyen Sinh Nhat - Fullstack Developer specializing in React, Next.js, and modern web technologies.",
+      "Speed up service, cut losses, and enhance customer experience with Scan Now QR ordering software. Start your 14-day free trial today.",
     ogLocale: "en_US",
-    twitterTitle: "Nguyen Sinh Nhat | Fullstack Developer",
+    twitterTitle: "Scan Now — Smart QR Ordering Software for F&B",
     twitterDescription:
-      "Portfolio of Nguyen Sinh Nhat - Fullstack Developer specializing in React, Next.js, and modern web technologies.",
-    ogImageAlt: "Nguyen Sinh Nhat - Fullstack Developer Portfolio",
+      "Trusted by 300,000+ restaurants. Scan QR, order, pay — setup in 15 min. Free 14-day trial.",
+    ogImageAlt: "Scan Now — Smart QR Ordering Software for Restaurants",
     canonicalUrl: `${SITE_CONFIG.baseUrl}/en`,
   },
 };
@@ -63,7 +63,7 @@ const OG_LOCALE_URL: Record<SupportedLocale, string> = {
 // ============================================================================
 
 const SHARED_METADATA: Partial<Metadata> = {
-  applicationName: "Nguyen Sinh Nhat Portfolio",
+  applicationName: "Scan Now",
   generator: "Next.js",
   referrer: "origin-when-cross-origin",
   metadataBase: new URL(SITE_CONFIG.baseUrl),
@@ -72,31 +72,23 @@ const SHARED_METADATA: Partial<Metadata> = {
     apple: "/icons/favicon.svg",
   },
   keywords: [
-    "Nguyen Sinh Nhat",
-    "Portfolio",
-    "Fullstack Developer",
-    "Web Developer",
-    "React",
-    "Next.js",
-    "Node.js",
-    "TypeScript",
-    "NestJS",
-    "Vietnam Developer",
-    "Software Engineer",
-    "Frontend Developer",
-    "Backend Developer",
-    "JavaScript",
-    "Tailwind CSS",
-    "Shadcn UI",
-    "Agile",
-    "Scrum",
-    "Web3",
-    "Blockchain",
-    "AI",
+    "Scan Now",
+    "QR ordering software",
+    "restaurant ordering system",
+    "F&B management software",
+    "QR menu",
+    "digital menu",
+    "table ordering",
+    "restaurant POS",
+    "online ordering",
+    "restaurant management",
+    "contactless ordering",
+    "food and beverage software",
+    "phần mềm gọi món",
+    "quét mã QR nhà hàng",
+    "quản lý nhà hàng",
+    "thực đơn số",
   ],
-  authors: [{ name: "Nguyen Sinh Nhat", url: SITE_CONFIG.baseUrl }],
-  creator: "Nguyen Sinh Nhat",
-  publisher: "Nguyen Sinh Nhat",
   formatDetection: {
     email: false,
     address: false,
@@ -118,7 +110,7 @@ const SHARED_METADATA: Partial<Metadata> = {
   },
   openGraph: {
     url: SITE_CONFIG.baseUrl,
-    siteName: "Nguyen Sinh Nhat Portfolio",
+    siteName: "Scan Now",
     images: [
       {
         url: "/images/avatar.png",
@@ -131,10 +123,9 @@ const SHARED_METADATA: Partial<Metadata> = {
   twitter: {
     card: "summary_large_image",
     images: ["/images/avatar.png"],
-    creator: "@nhat251",
   },
   appleWebApp: {
-    title: "Nguyen Sinh Nhat Portfolio",
+    title: "Scan Now",
     statusBarStyle: "default",
     capable: true,
   },
@@ -148,8 +139,8 @@ const SHARED_METADATA: Partial<Metadata> = {
 export const APP_LAYOUT_METADATA: Metadata = {
   ...SHARED_METADATA,
   title: {
-    default: "Nguyen Sinh Nhat | Fullstack Developer",
-    template: "%s | Nguyen Sinh Nhat",
+    default: LOCALE_METADATA.en.title,
+    template: "%s | Scan Now",
   },
   description: LOCALE_METADATA.en.description,
   alternates: {
@@ -189,9 +180,6 @@ export function getLocaleMetadata(locale: SupportedLocale): Metadata {
     title: meta.title,
     description: meta.description,
     keywords: SHARED_METADATA.keywords,
-    authors: SHARED_METADATA.authors,
-    creator: SHARED_METADATA.creator,
-    publisher: SHARED_METADATA.publisher,
     icons: SHARED_METADATA.icons,
     formatDetection: SHARED_METADATA.formatDetection,
     robots: SHARED_METADATA.robots,
@@ -204,7 +192,7 @@ export function getLocaleMetadata(locale: SupportedLocale): Metadata {
       title: meta.ogTitle,
       description: meta.ogDescription,
       url: meta.canonicalUrl,
-      siteName: "Nguyen Sinh Nhat Portfolio",
+      siteName: "Scan Now",
       images: [
         {
           url: "/images/avatar.png",
@@ -221,7 +209,6 @@ export function getLocaleMetadata(locale: SupportedLocale): Metadata {
       title: meta.twitterTitle,
       description: meta.twitterDescription,
       images: ["/images/avatar.png"],
-      creator: "@nhat251",
     },
     appleWebApp: SHARED_METADATA.appleWebApp,
   };
