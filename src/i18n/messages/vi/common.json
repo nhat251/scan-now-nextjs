@@ -1,18 +1,7 @@
 {
   "global": {
-    "brand": "Scan Now",
     "header": {
       "startNow": "Bắt đầu ngay"
-    },
-    "locale": {
-      "label": "Ngôn ngữ",
-      "selectAriaLabel": "Chọn ngôn ngữ",
-      "vi": "Tiếng Việt",
-      "en": "Tiếng Anh",
-      "short": {
-        "vi": "VI",
-        "en": "EN"
-      }
     },
     "mobileNav": {
       "openMenu": "Mở menu",

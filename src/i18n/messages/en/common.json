@@ -1,18 +1,7 @@
 {
   "global": {
-    "brand": "Scan Now",
     "header": {
       "startNow": "Get Started"
-    },
-    "locale": {
-      "label": "Language",
-      "selectAriaLabel": "Select language",
-      "vi": "Vietnamese",
-      "en": "English",
-      "short": {
-        "vi": "VI",
-        "en": "EN"
-      }
     },
     "mobileNav": {
       "openMenu": "Open menu",
