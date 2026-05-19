@@ -7,17 +7,20 @@ import { SITE_CONFIG } from "@/constants/site";
 // LOCALE-SPECIFIC METADATA — Scan Now F&B ordering platform
 // ============================================================================
 
-const LOCALE_METADATA: Record<SupportedLocale, {
-  title: string;
-  description: string;
-  ogTitle: string;
-  ogDescription: string;
-  ogLocale: string;
-  twitterTitle: string;
-  twitterDescription: string;
-  ogImageAlt: string;
-  canonicalUrl: string;
-}> = {
+const LOCALE_METADATA: Record<
+  SupportedLocale,
+  {
+    title: string;
+    description: string;
+    ogTitle: string;
+    ogDescription: string;
+    ogLocale: string;
+    twitterTitle: string;
+    twitterDescription: string;
+    ogImageAlt: string;
+    canonicalUrl: string;
+  }
+> = {
   vi: {
     title: "Scan Now — Phần mềm gọi món QR thông minh cho nhà hàng",
     description:
@@ -113,7 +116,7 @@ const SHARED_METADATA: Partial<Metadata> = {
     siteName: "Scan Now",
     images: [
       {
-        url: "/images/avatar.png",
+        url: "/icons/logo-transparent.webp",
         width: 1200,
         height: 630,
       },
@@ -122,7 +125,7 @@ const SHARED_METADATA: Partial<Metadata> = {
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/images/avatar.png"],
+    images: ["/icons/logo-transparent.webp"],
   },
   appleWebApp: {
     title: "Scan Now",
@@ -195,7 +198,7 @@ export function getLocaleMetadata(locale: SupportedLocale): Metadata {
       siteName: "Scan Now",
       images: [
         {
-          url: "/images/avatar.png",
+          url: "/icons/logo-transparent.webp",
           width: 1200,
           height: 630,
           alt: meta.ogImageAlt,
@@ -208,7 +211,7 @@ export function getLocaleMetadata(locale: SupportedLocale): Metadata {
       card: "summary_large_image",
       title: meta.twitterTitle,
       description: meta.twitterDescription,
-      images: ["/images/avatar.png"],
+      images: ["/icons/logo-transparent.webp"],
     },
     appleWebApp: SHARED_METADATA.appleWebApp,
   };
