@@ -2,7 +2,7 @@ import { BASE_URL } from "@/constants/url";
 
 export type navType = {
   id: string;
-  text: string;
+  labelKey: string;
   path: string;
   createPath: () => string;
   isShow: boolean;
@@ -14,7 +14,7 @@ const createHomePath = () => `${BASE_URL.HOME}`;
 export const nav_items: navType[] = [
   {
     id: "benefits",
-    text: "Tính năng",
+    labelKey: "global.nav.features",
     path: BASE_URL.HOME,
     createPath: createHomePath,
     isShow: true,
@@ -22,7 +22,7 @@ export const nav_items: navType[] = [
   },
   {
     id: "feature-details",
-    text: "Quy trình",
+    labelKey: "global.nav.process",
     path: BASE_URL.HOME,
     createPath: createHomePath,
     isShow: true,
@@ -30,7 +30,7 @@ export const nav_items: navType[] = [
   },
   {
     id: "pricing",
-    text: "Bảng giá",
+    labelKey: "global.nav.pricing",
     path: BASE_URL.HOME,
     createPath: createHomePath,
     isShow: true,
@@ -38,7 +38,7 @@ export const nav_items: navType[] = [
   },
   {
     id: "final-cta",
-    text: "Liên hệ",
+    labelKey: "global.nav.contact",
     path: BASE_URL.HOME,
     createPath: createHomePath,
     isShow: true,

@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import {
   ArrowRight,
   BarChart3,
@@ -21,141 +22,6 @@ import { Separator } from "@/ui/separator";
 
 const brands = ["Saigon Bistro", "Luna Kitchen", "Mekong Bowl", "Ariya Café", "Lotus Dine"];
 
-const benefitItems = [
-  {
-    title: "Tăng tốc phục vụ",
-    description: "Khách quét mã và gọi món trực tiếp, giảm thời gian ghi order thủ công giờ cao điểm.",
-    icon: <Rocket className="size-7" />,
-  },
-  {
-    title: "Tiết kiệm chi phí",
-    description: "Cắt giảm giấy in menu và vận hành tinh gọn hơn mà vẫn giữ trải nghiệm chuyên nghiệp.",
-    icon: <HandCoins className="size-7" />,
-  },
-  {
-    title: "Quản lý thông minh",
-    description: "Theo dõi doanh thu, bàn phục vụ và hiệu suất nhân viên theo thời gian thực.",
-    icon: <BarChart3 className="size-7" />,
-  },
-];
-
-const featureGrid = [
-  {
-    title: "Thực đơn số hóa",
-    description: "Cập nhật món ăn theo mùa trong vài giây, không cần in lại menu.",
-    icon: <ScanLine className="size-7" />,
-  },
-  {
-    title: "Phân tích thời gian thực",
-    description: "Nắm được món bán chạy, khung giờ cao điểm và tỷ lệ quay lại của khách.",
-    icon: <BarChart3 className="size-7" />,
-  },
-  {
-    title: "Quản lý nhân sự",
-    description: "Phân quyền theo vai trò, theo dõi hiệu suất và lịch làm việc trực quan.",
-    icon: <Users className="size-7" />,
-  },
-  {
-    title: "Khách hàng thân thiết",
-    description: "Tạo chương trình tích điểm và ưu đãi tự động để tăng tần suất quay lại.",
-    icon: <Sparkles className="size-7" />,
-  },
-];
-
-const planCards = [
-  {
-    name: "Cơ bản",
-    price: "200.000đ",
-    period: "/tháng",
-    cta: "Chọn gói này",
-    ctaVariant: "outline" as const,
-    highlight: false,
-    features: ["Menu online 50 món", "Tối đa 20 bàn", "Báo cáo cơ bản"],
-  },
-  {
-    name: "Premium Care",
-    price: "500.000đ",
-    period: "/tháng",
-    cta: "Dùng thử 14 ngày",
-    ctaVariant: "default" as const,
-    highlight: true,
-    badge: "Phổ biến nhất",
-    features: ["Menu không giới hạn", "Không giới hạn số bàn", "Thanh toán trực tuyến", "Hỗ trợ 24/7"],
-  },
-  {
-    name: "Doanh nghiệp",
-    price: "Liên hệ",
-    period: "",
-    cta: "Gửi yêu cầu",
-    ctaVariant: "secondary" as const,
-    highlight: false,
-    features: ["Tùy chỉnh thương hiệu riêng", "API kết nối POS sẵn có", "Quản lý chuỗi cửa hàng"],
-  },
-];
-
-const faqItems = [
-  {
-    question: "Cần mất bao lâu để thiết lập xong hệ thống?",
-    answer:
-      "Chỉ mất từ 15-30 phút để bạn tải menu và tạo mã QR đầu tiên. Đội ngũ kỹ thuật sẽ hỗ trợ để nhà hàng vận hành trong cùng ngày.",
-    defaultOpen: true,
-  },
-  {
-    question: "Tôi có cần mua thêm thiết bị phần cứng gì không?",
-    answer:
-      "Không cần. Scan Now vận hành trên web, bạn chỉ cần điện thoại hoặc máy tính bảng hiện có để quản lý đơn hàng.",
-  },
-  {
-    question: "Chi phí 500k/tháng đã bao gồm tất cả chưa?",
-    answer:
-      "Gói đã bao gồm hạ tầng lưu trữ, bảo mật và cập nhật tính năng mới. Không có chi phí ẩn phát sinh.",
-  },
-  {
-    question: "Hỗ trợ kỹ thuật như thế nào nếu gặp sự cố?",
-    answer:
-      "Đội ngũ hỗ trợ 24/7 qua hotline, Zalo và email. Lỗi nghiêm trọng sẽ được ưu tiên xử lý từ xa ngay lập tức.",
-  },
-];
-
-const testimonialItems = [
-  {
-    name: "Anh Minh Trần",
-    role: "Chủ nhà hàng nướng tại Quận 7",
-    quote:
-      "Từ khi dùng Scan Now, đội ngũ phục vụ xử lý đơn nhanh hơn rõ rệt và khách hàng hài lòng hơn vì không phải chờ lâu.",
-    avatarUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&h=120&fit=crop&crop=faces",
-  },
-  {
-    name: "Chị Lan Hương",
-    role: "Quản lý chuỗi café tại Hà Nội",
-    quote:
-      "Báo cáo theo thời gian thực giúp tôi quyết định nhập hàng chính xác hơn, giảm lãng phí gần 20% chỉ sau 2 tháng.",
-    avatarUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&h=120&fit=crop&crop=faces",
-  },
-  {
-    name: "Anh Hoàng Nam",
-    role: "Founder mô hình food court",
-    quote:
-      "Điều tôi thích nhất là triển khai nhanh. Chỉ trong một buổi là toàn bộ gian hàng đã có menu QR đồng bộ.",
-    avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&h=120&fit=crop&crop=faces",
-  },
-];
-
-const PROCESS_STEPS = [
-  {
-    title: "Khách quét mã QR tại bàn",
-    description: "Hiển thị menu tối ưu cho điện thoại với hình ảnh, mô tả và tùy chọn món.",
-  },
-  {
-    title: "Đặt món và thanh toán linh hoạt",
-    description: "Hỗ trợ gọi món tại chỗ, thanh toán online hoặc tại quầy theo nhu cầu.",
-  },
-  {
-    title: "Bếp và thu ngân nhận đơn tức thì",
-    description: "Đơn được đồng bộ theo thời gian thực, giảm sai sót truyền tin thủ công.",
-  },
-];
-
 export const SalesLanding = () => {
   return (
     <main className="bg-background overflow-x-hidden">
@@ -171,7 +37,9 @@ export const SalesLanding = () => {
   );
 };
 
-const HeroSection = () => {
+const HeroSection = async () => {
+  const t = await getTranslations();
+
   return (
     <section id="hero" className="scroll-mt-header relative overflow-hidden bg-black px-5 pt-28 pb-24 md:px-16 md:pt-36">
       <div
@@ -185,33 +53,31 @@ const HeroSection = () => {
         <div className="max-w-3xl space-y-8">
           <span className="border-primary/20 bg-primary/10 text-primary inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold tracking-[0.15em] uppercase backdrop-blur-sm">
             <Sparkles className="size-4" />
-            Xu hướng ẩm thực 2026
+            {t("landing.hero.badge")}
           </span>
 
           <h1 className="text-on-surface text-4xl leading-tight font-extrabold sm:text-5xl lg:text-6xl">
-            Phần mềm quản lý gọi món <br className="hidden md:block" />
-            <span className="text-primary-container">thông minh nhất</span> hiện nay
+            {t("landing.hero.title.line1")} <br className="hidden md:block" />
+            <span className="text-primary-container">{t("landing.hero.title.highlight")}</span> {t("landing.hero.title.line2")}
           </h1>
 
-          <p className="text-on-surface-variant max-w-2xl text-base leading-relaxed sm:text-xl">
-            Hơn 300.000 nhà kinh doanh F&B đang dùng Scan Now để tăng tốc phục vụ, giảm thất thoát và tạo trải nghiệm gọi món hiện đại.
-          </p>
+          <p className="text-on-surface-variant max-w-2xl text-base leading-relaxed sm:text-xl">{t("landing.hero.description")}</p>
 
           <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center">
             <Button size="lg" className="w-full sm:w-auto">
-              Dùng thử miễn phí
+              {t("landing.hero.ctaPrimary")}
             </Button>
             <Button variant="outline" size="lg" className="w-full sm:w-auto">
-              Khám phá
+              {t("landing.hero.ctaSecondary")}
               <CirclePlay className="size-5" />
             </Button>
           </div>
 
           <div className="border-outline-variant/40 grid grid-cols-2 gap-6 border-t pt-8 sm:grid-cols-4 sm:gap-10">
-            <MetricItem value="300.000+" label="nhà kinh doanh sử dụng" />
-            <MetricItem value="10.000+" label="đối tác mới mỗi tháng" />
-            <MetricItem value="15 phút" label="thời gian khởi tạo menu" />
-            <MetricItem value="24/7" label="hỗ trợ kỹ thuật" />
+            <MetricItem value="300.000+" label={t("landing.hero.metrics.businesses")} />
+            <MetricItem value="10.000+" label={t("landing.hero.metrics.partners")} />
+            <MetricItem value={t("landing.hero.metrics.setupValue")} label={t("landing.hero.metrics.setup")} />
+            <MetricItem value="24/7" label={t("landing.hero.metrics.support")} />
           </div>
         </div>
       </div>
@@ -219,12 +85,14 @@ const HeroSection = () => {
   );
 };
 
-const TrustedBySection = () => {
+const TrustedBySection = async () => {
+  const t = await getTranslations();
+
   return (
     <section className="border-outline-variant/30 bg-surface border-b px-5 py-12 md:px-16">
       <div className="mx-auto w-full max-w-7xl space-y-8">
         <p className="text-on-surface-variant text-center text-xs font-bold tracking-[0.2em] uppercase">
-          Hàng ngàn chủ nhà hàng đã thay đổi cách vận hành cùng Scan Now
+          {t("landing.trusted.title")}
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8">
           {brands.map((brand) => (
@@ -241,19 +109,42 @@ const TrustedBySection = () => {
   );
 };
 
-const BenefitsSection = () => {
+const BenefitsSection = async () => {
+  const t = await getTranslations();
+
+  const benefitItems = [
+    {
+      key: "speed",
+      title: t("landing.benefits.items.speed.title"),
+      description: t("landing.benefits.items.speed.description"),
+      icon: <Rocket className="size-7" />,
+    },
+    {
+      key: "cost",
+      title: t("landing.benefits.items.cost.title"),
+      description: t("landing.benefits.items.cost.description"),
+      icon: <HandCoins className="size-7" />,
+    },
+    {
+      key: "management",
+      title: t("landing.benefits.items.management.title"),
+      description: t("landing.benefits.items.management.description"),
+      icon: <BarChart3 className="size-7" />,
+    },
+  ];
+
   return (
     <section id="benefits" className="scroll-mt-header bg-surface px-5 py-24 md:px-16">
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading
-          title="Lợi ích vượt trội"
-          description="Giải pháp đồng bộ từ gọi món, vận hành bếp tới quản trị doanh thu giúp nhà hàng tăng trưởng bền vững."
+          title={t("landing.benefits.title")}
+          description={t("landing.benefits.description")}
           className="mb-16"
         />
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
           {benefitItems.map((item) => (
-            <FeatureCard key={item.title} title={item.title} description={item.description} icon={item.icon} className="p-10" />
+            <FeatureCard key={item.key} title={item.title} description={item.description} icon={item.icon} className="p-10" />
           ))}
         </div>
       </div>
@@ -261,24 +152,68 @@ const BenefitsSection = () => {
   );
 };
 
-const FeatureDetailSection = () => {
+const FeatureDetailSection = async () => {
+  const t = await getTranslations();
+
+  const featureGrid = [
+    {
+      key: "digitalMenu",
+      title: t("landing.featureDetails.cards.digitalMenu.title"),
+      description: t("landing.featureDetails.cards.digitalMenu.description"),
+      icon: <ScanLine className="size-7" />,
+    },
+    {
+      key: "analytics",
+      title: t("landing.featureDetails.cards.analytics.title"),
+      description: t("landing.featureDetails.cards.analytics.description"),
+      icon: <BarChart3 className="size-7" />,
+    },
+    {
+      key: "staff",
+      title: t("landing.featureDetails.cards.staff.title"),
+      description: t("landing.featureDetails.cards.staff.description"),
+      icon: <Users className="size-7" />,
+    },
+    {
+      key: "loyalty",
+      title: t("landing.featureDetails.cards.loyalty.title"),
+      description: t("landing.featureDetails.cards.loyalty.description"),
+      icon: <Sparkles className="size-7" />,
+    },
+  ];
+
+  const processSteps = [
+    {
+      key: "scan",
+      title: t("landing.featureDetails.process.steps.scan.title"),
+      description: t("landing.featureDetails.process.steps.scan.description"),
+    },
+    {
+      key: "order",
+      title: t("landing.featureDetails.process.steps.order.title"),
+      description: t("landing.featureDetails.process.steps.order.description"),
+    },
+    {
+      key: "sync",
+      title: t("landing.featureDetails.process.steps.sync.title"),
+      description: t("landing.featureDetails.process.steps.sync.description"),
+    },
+  ];
+
   return (
     <section id="feature-details" className="scroll-mt-header bg-surface-container-lowest px-5 py-24 md:px-16">
       <div className="mx-auto w-full max-w-7xl space-y-16">
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
           <SectionHeading
             align="left"
-            eyebrow="Hệ sinh thái toàn diện"
-            title="Mọi tính năng cần thiết để vận hành chuyên nghiệp"
-            description="Từ thực đơn số hóa, quản trị nhân sự đến phân tích doanh thu, mọi thứ đều nằm trong một nền tảng thống nhất."
+            eyebrow={t("landing.featureDetails.heading.eyebrow")}
+            title={t("landing.featureDetails.heading.title")}
+            description={t("landing.featureDetails.heading.description")}
           />
 
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             {featureGrid.map((item) => (
-              <article
-                key={item.title}
-                className="border-outline-variant/40 bg-surface-container rounded-2xl border p-6 shadow-sm"
-              >
+              <article key={item.key} className="border-outline-variant/40 bg-surface-container rounded-2xl border p-6 shadow-sm">
                 <div className="text-primary mb-4">{item.icon}</div>
                 <h3 className="text-on-surface mb-2 text-lg font-bold">{item.title}</h3>
                 <p className="text-on-surface-variant text-sm leading-relaxed">{item.description}</p>
@@ -290,9 +225,9 @@ const FeatureDetailSection = () => {
         <div className="from-primary-container to-secondary-container text-on-primary rounded-[2rem] bg-gradient-to-r p-8 sm:p-12">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div className="space-y-3">
-              <h3 className="text-2xl leading-tight font-bold sm:text-3xl">Sẵn sàng tích hợp thanh toán online?</h3>
+              <h3 className="text-2xl leading-tight font-bold sm:text-3xl">{t("landing.featureDetails.paymentCta.title")}</h3>
               <p className="text-on-primary/90 max-w-2xl text-sm leading-relaxed sm:text-base">
-                Hỗ trợ MoMo, ZaloPay, ShopeePay và mọi ngân hàng Việt Nam. Giao dịch được ghi nhận tức thì vào báo cáo vận hành.
+                {t("landing.featureDetails.paymentCta.description")}
               </p>
             </div>
             <Button
@@ -300,7 +235,7 @@ const FeatureDetailSection = () => {
               size="lg"
               className="text-primary-container w-full border-white/15 bg-white hover:bg-white/90 sm:w-auto"
             >
-              Kết nối ngay
+              {t("landing.featureDetails.paymentCta.button")}
               <ArrowRight className="size-5" />
             </Button>
           </div>
@@ -309,15 +244,17 @@ const FeatureDetailSection = () => {
         <div className="border-outline-variant/40 bg-surface-container-low rounded-3xl border p-8 sm:p-10">
           <SectionHeading
             align="left"
-            eyebrow="Quy trình"
-            title="Triển khai theo 3 bước đơn giản"
-            description="Không cần thay đổi hạ tầng hiện tại, đội ngũ có thể vận hành ngay trong ngày."
+            eyebrow={t("landing.featureDetails.process.eyebrow")}
+            title={t("landing.featureDetails.process.title")}
+            description={t("landing.featureDetails.process.description")}
             className="mb-10"
           />
           <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-            {PROCESS_STEPS.map((step, index) => (
-              <article key={step.title} className="bg-surface-container-lowest border-outline-variant/35 rounded-2xl border p-6">
-                <p className="text-primary mb-4 text-sm font-bold tracking-[0.2em] uppercase">Bước {index + 1}</p>
+            {processSteps.map((step, index) => (
+              <article key={step.key} className="bg-surface-container-lowest border-outline-variant/35 rounded-2xl border p-6">
+                <p className="text-primary mb-4 text-sm font-bold tracking-[0.2em] uppercase">
+                  {t("landing.featureDetails.process.stepLabel")} {index + 1}
+                </p>
                 <h4 className="text-on-surface mb-2 text-lg font-semibold">{step.title}</h4>
                 <p className="text-on-surface-variant text-sm leading-relaxed">{step.description}</p>
               </article>
@@ -329,20 +266,46 @@ const FeatureDetailSection = () => {
   );
 };
 
-const TestimonialsSection = () => {
+const TestimonialsSection = async () => {
+  const t = await getTranslations();
+
+  const testimonialItems = [
+    {
+      key: "minh",
+      name: t("landing.testimonials.items.minh.name"),
+      role: t("landing.testimonials.items.minh.role"),
+      quote: t("landing.testimonials.items.minh.quote"),
+      avatarUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&h=120&fit=crop&crop=faces",
+    },
+    {
+      key: "lan",
+      name: t("landing.testimonials.items.lan.name"),
+      role: t("landing.testimonials.items.lan.role"),
+      quote: t("landing.testimonials.items.lan.quote"),
+      avatarUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&h=120&fit=crop&crop=faces",
+    },
+    {
+      key: "hoang",
+      name: t("landing.testimonials.items.hoang.name"),
+      role: t("landing.testimonials.items.hoang.role"),
+      quote: t("landing.testimonials.items.hoang.quote"),
+      avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&h=120&fit=crop&crop=faces",
+    },
+  ];
+
   return (
     <section id="testimonials" className="scroll-mt-header bg-surface px-5 py-24 md:px-16">
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading
-          title="Chia sẻ từ đối tác"
-          description="Những kết quả thực tế từ các mô hình F&B đã ứng dụng Scan Now trong vận hành hằng ngày."
+          title={t("landing.testimonials.title")}
+          description={t("landing.testimonials.description")}
           className="mb-16"
         />
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
           {testimonialItems.map((item) => (
             <TestimonialCard
-              key={item.name}
+              key={item.key}
               name={item.name}
               role={item.role}
               quote={item.quote}
@@ -355,24 +318,72 @@ const TestimonialsSection = () => {
   );
 };
 
-const PricingSection = () => {
+const PricingSection = async () => {
+  const t = await getTranslations();
+
+  const planCards = [
+    {
+      key: "basic",
+      name: t("landing.pricing.plans.basic.name"),
+      price: "200.000đ",
+      period: t("landing.pricing.plans.basic.period"),
+      cta: t("landing.pricing.plans.basic.cta"),
+      ctaVariant: "outline" as const,
+      highlight: false,
+      features: [
+        t("landing.pricing.plans.basic.features.menu"),
+        t("landing.pricing.plans.basic.features.tables"),
+        t("landing.pricing.plans.basic.features.report"),
+      ],
+    },
+    {
+      key: "premium",
+      name: t("landing.pricing.plans.premium.name"),
+      price: "500.000đ",
+      period: t("landing.pricing.plans.premium.period"),
+      cta: t("landing.pricing.plans.premium.cta"),
+      ctaVariant: "default" as const,
+      highlight: true,
+      badge: t("landing.pricing.plans.premium.badge"),
+      features: [
+        t("landing.pricing.plans.premium.features.menu"),
+        t("landing.pricing.plans.premium.features.tables"),
+        t("landing.pricing.plans.premium.features.payment"),
+        t("landing.pricing.plans.premium.features.support"),
+      ],
+    },
+    {
+      key: "enterprise",
+      name: t("landing.pricing.plans.enterprise.name"),
+      price: t("landing.pricing.plans.enterprise.price"),
+      period: "",
+      cta: t("landing.pricing.plans.enterprise.cta"),
+      ctaVariant: "secondary" as const,
+      highlight: false,
+      features: [
+        t("landing.pricing.plans.enterprise.features.branding"),
+        t("landing.pricing.plans.enterprise.features.api"),
+        t("landing.pricing.plans.enterprise.features.chain"),
+      ],
+    },
+  ];
+
   return (
     <section id="pricing" className="scroll-mt-header bg-surface-container-low px-5 py-24 md:px-16">
       <div className="mx-auto w-full max-w-7xl">
         <SectionHeading
-          title="Gói giải pháp linh hoạt"
-          description="Lựa chọn theo quy mô vận hành hiện tại và mở rộng khi nhà hàng tăng trưởng."
+          title={t("landing.pricing.title")}
+          description={t("landing.pricing.description")}
           className="mb-16"
         />
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
           {planCards.map((plan) => (
             <article
-              key={plan.name}
+              key={plan.key}
               className={cn(
                 "border-outline-variant/60 bg-surface-container-lowest relative flex h-full flex-col rounded-3xl border p-8 shadow-sm",
-                plan.highlight &&
-                  "border-primary-container shadow-primary-container/20 scale-[1.01] border-2 shadow-xl"
+                plan.highlight && "border-primary-container shadow-primary-container/20 scale-[1.01] border-2 shadow-xl"
               )}
             >
               {plan.badge ? (
@@ -409,20 +420,49 @@ const PricingSection = () => {
   );
 };
 
-const FaqSection = () => {
+const FaqSection = async () => {
+  const t = await getTranslations();
+
+  const faqItems = [
+    {
+      key: "setup",
+      question: t("landing.faq.items.setup.question"),
+      answer: t("landing.faq.items.setup.answer"),
+      defaultOpen: true,
+    },
+    {
+      key: "hardware",
+      question: t("landing.faq.items.hardware.question"),
+      answer: t("landing.faq.items.hardware.answer"),
+      defaultOpen: false,
+    },
+    {
+      key: "pricing",
+      question: t("landing.faq.items.pricing.question"),
+      answer: t("landing.faq.items.pricing.answer"),
+      defaultOpen: false,
+    },
+    {
+      key: "support",
+      question: t("landing.faq.items.support.question"),
+      answer: t("landing.faq.items.support.answer"),
+      defaultOpen: false,
+    },
+  ];
+
   return (
     <section id="faq" className="scroll-mt-header bg-surface px-5 py-24 md:px-16">
       <div className="mx-auto w-full max-w-3xl">
         <SectionHeading
-          title="Câu hỏi thường gặp"
-          description="Một số câu hỏi phổ biến trước khi bắt đầu triển khai tại nhà hàng của bạn."
+          title={t("landing.faq.title")}
+          description={t("landing.faq.description")}
           className="mb-12"
         />
 
         <div className="space-y-4">
           {faqItems.map((item) => (
             <details
-              key={item.question}
+              key={item.key}
               className="group border-outline-variant/40 bg-surface-container-low overflow-hidden rounded-2xl border"
               open={item.defaultOpen}
             >
@@ -442,7 +482,9 @@ const FaqSection = () => {
   );
 };
 
-const FinalCtaSection = () => {
+const FinalCtaSection = async () => {
+  const t = await getTranslations();
+
   return (
     <section id="final-cta" className="scroll-mt-header bg-on-surface relative overflow-hidden px-5 py-24 md:px-16">
       <div aria-hidden className="bg-primary/10 pointer-events-none absolute top-0 -right-24 h-full w-80 -skew-x-12" />
@@ -450,23 +492,23 @@ const FinalCtaSection = () => {
 
       <div className="relative z-10 mx-auto w-full max-w-7xl text-center">
         <h2 className="mx-auto mb-6 max-w-4xl text-4xl leading-tight font-extrabold text-white sm:text-5xl">
-          Sẵn sàng để đột phá doanh thu nhà hàng?
+          {t("landing.finalCta.title")}
         </h2>
         <p className="mx-auto mb-12 max-w-3xl text-base leading-relaxed text-white/75 sm:text-xl">
-          Gia nhập cộng đồng hơn 300.000 chủ nhà hàng đã tin dùng Scan Now. Bắt đầu dùng thử miễn phí 14 ngày ngay hôm nay.
+          {t("landing.finalCta.description")}
         </p>
 
         <div className="flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
           <Button size="lg" className="w-full sm:w-auto">
-            Bắt đầu ngay miễn phí
+            {t("landing.finalCta.primary")}
             <ArrowRight className="size-5" />
           </Button>
           <Button variant="outline" size="lg" className="w-full border-white/35 text-white hover:bg-white/10 sm:w-auto">
-            Liên hệ tư vấn
+            {t("landing.finalCta.secondary")}
           </Button>
         </div>
 
-        <p className="mt-7 text-xs text-white/45">Không yêu cầu thẻ tín dụng. Hủy bất cứ lúc nào.</p>
+        <p className="mt-7 text-xs text-white/45">{t("landing.finalCta.disclaimer")}</p>
       </div>
     </section>
   );

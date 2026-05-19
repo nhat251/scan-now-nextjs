@@ -1,1 +1,215 @@
-{}
+{
+  "global": {
+    "brand": "Scan Now",
+    "header": {
+      "startNow": "Bắt đầu ngay"
+    },
+    "mobileNav": {
+      "openMenu": "Mở menu",
+      "closeMenu": "Đóng menu",
+      "startNow": "Bắt đầu ngay"
+    },
+    "nav": {
+      "features": "Tính năng",
+      "process": "Quy trình",
+      "pricing": "Bảng giá",
+      "contact": "Liên hệ"
+    },
+    "footer": {
+      "description": "Giải pháp gọi món thông minh cho nhà hàng hiện đại.",
+      "columns": {
+        "company": "Công ty",
+        "legal": "Pháp lý",
+        "support": "Hỗ trợ"
+      },
+      "links": {
+        "about": "Về chúng tôi",
+        "careers": "Tuyển dụng",
+        "blog": "Blog",
+        "terms": "Điều khoản",
+        "privacy": "Bảo mật",
+        "customerSupport": "Hỗ trợ khách hàng",
+        "helpCenter": "Trung tâm trợ giúp"
+      }
+    }
+  },
+  "landing": {
+    "hero": {
+      "badge": "Xu hướng ẩm thực 2026",
+      "title": {
+        "line1": "Phần mềm quản lý gọi món",
+        "highlight": "thông minh nhất",
+        "line2": "hiện nay"
+      },
+      "description": "Hơn 300.000 nhà kinh doanh F&B đang dùng Scan Now để tăng tốc phục vụ, giảm thất thoát và tạo trải nghiệm gọi món hiện đại.",
+      "ctaPrimary": "Dùng thử miễn phí",
+      "ctaSecondary": "Khám phá",
+      "metrics": {
+        "businesses": "nhà kinh doanh sử dụng",
+        "partners": "đối tác mới mỗi tháng",
+        "setupValue": "15 phút",
+        "setup": "thời gian khởi tạo menu",
+        "support": "hỗ trợ kỹ thuật"
+      }
+    },
+    "trusted": {
+      "title": "Hàng ngàn chủ nhà hàng đã thay đổi cách vận hành cùng Scan Now"
+    },
+    "benefits": {
+      "title": "Lợi ích vượt trội",
+      "description": "Giải pháp đồng bộ từ gọi món, vận hành bếp tới quản trị doanh thu giúp nhà hàng tăng trưởng bền vững.",
+      "items": {
+        "speed": {
+          "title": "Tăng tốc phục vụ",
+          "description": "Khách quét mã và gọi món trực tiếp, giảm thời gian ghi order thủ công giờ cao điểm."
+        },
+        "cost": {
+          "title": "Tiết kiệm chi phí",
+          "description": "Cắt giảm giấy in menu và vận hành tinh gọn hơn mà vẫn giữ trải nghiệm chuyên nghiệp."
+        },
+        "management": {
+          "title": "Quản lý thông minh",
+          "description": "Theo dõi doanh thu, bàn phục vụ và hiệu suất nhân viên theo thời gian thực."
+        }
+      }
+    },
+    "featureDetails": {
+      "heading": {
+        "eyebrow": "Hệ sinh thái toàn diện",
+        "title": "Mọi tính năng cần thiết để vận hành chuyên nghiệp",
+        "description": "Từ thực đơn số hóa, quản trị nhân sự đến phân tích doanh thu, mọi thứ đều nằm trong một nền tảng thống nhất."
+      },
+      "cards": {
+        "digitalMenu": {
+          "title": "Thực đơn số hóa",
+          "description": "Cập nhật món ăn theo mùa trong vài giây, không cần in lại menu."
+        },
+        "analytics": {
+          "title": "Phân tích thời gian thực",
+          "description": "Nắm được món bán chạy, khung giờ cao điểm và tỷ lệ quay lại của khách."
+        },
+        "staff": {
+          "title": "Quản lý nhân sự",
+          "description": "Phân quyền theo vai trò, theo dõi hiệu suất và lịch làm việc trực quan."
+        },
+        "loyalty": {
+          "title": "Khách hàng thân thiết",
+          "description": "Tạo chương trình tích điểm và ưu đãi tự động để tăng tần suất quay lại."
+        }
+      },
+      "paymentCta": {
+        "title": "Sẵn sàng tích hợp thanh toán online?",
+        "description": "Hỗ trợ MoMo, ZaloPay, ShopeePay và mọi ngân hàng Việt Nam. Giao dịch được ghi nhận tức thì vào báo cáo vận hành.",
+        "button": "Kết nối ngay"
+      },
+      "process": {
+        "eyebrow": "Quy trình",
+        "title": "Triển khai theo 3 bước đơn giản",
+        "description": "Không cần thay đổi hạ tầng hiện tại, đội ngũ có thể vận hành ngay trong ngày.",
+        "stepLabel": "Bước",
+        "steps": {
+          "scan": {
+            "title": "Khách quét mã QR tại bàn",
+            "description": "Hiển thị menu tối ưu cho điện thoại với hình ảnh, mô tả và tùy chọn món."
+          },
+          "order": {
+            "title": "Đặt món và thanh toán linh hoạt",
+            "description": "Hỗ trợ gọi món tại chỗ, thanh toán online hoặc tại quầy theo nhu cầu."
+          },
+          "sync": {
+            "title": "Bếp và thu ngân nhận đơn tức thì",
+            "description": "Đơn được đồng bộ theo thời gian thực, giảm sai sót truyền tin thủ công."
+          }
+        }
+      }
+    },
+    "testimonials": {
+      "title": "Chia sẻ từ đối tác",
+      "description": "Những kết quả thực tế từ các mô hình F&B đã ứng dụng Scan Now trong vận hành hằng ngày.",
+      "items": {
+        "minh": {
+          "name": "Anh Minh Trần",
+          "role": "Chủ nhà hàng nướng tại Quận 7",
+          "quote": "Từ khi dùng Scan Now, đội ngũ phục vụ xử lý đơn nhanh hơn rõ rệt và khách hàng hài lòng hơn vì không phải chờ lâu."
+        },
+        "lan": {
+          "name": "Chị Lan Hương",
+          "role": "Quản lý chuỗi café tại Hà Nội",
+          "quote": "Báo cáo theo thời gian thực giúp tôi quyết định nhập hàng chính xác hơn, giảm lãng phí gần 20% chỉ sau 2 tháng."
+        },
+        "hoang": {
+          "name": "Anh Hoàng Nam",
+          "role": "Founder mô hình food court",
+          "quote": "Điều tôi thích nhất là triển khai nhanh. Chỉ trong một buổi là toàn bộ gian hàng đã có menu QR đồng bộ."
+        }
+      }
+    },
+    "pricing": {
+      "title": "Gói giải pháp linh hoạt",
+      "description": "Lựa chọn theo quy mô vận hành hiện tại và mở rộng khi nhà hàng tăng trưởng.",
+      "plans": {
+        "basic": {
+          "name": "Cơ bản",
+          "period": "/tháng",
+          "cta": "Chọn gói này",
+          "features": {
+            "menu": "Menu online 50 món",
+            "tables": "Tối đa 20 bàn",
+            "report": "Báo cáo cơ bản"
+          }
+        },
+        "premium": {
+          "name": "Premium Care",
+          "period": "/tháng",
+          "cta": "Dùng thử 14 ngày",
+          "badge": "Phổ biến nhất",
+          "features": {
+            "menu": "Menu không giới hạn",
+            "tables": "Không giới hạn số bàn",
+            "payment": "Thanh toán trực tuyến",
+            "support": "Hỗ trợ 24/7"
+          }
+        },
+        "enterprise": {
+          "name": "Doanh nghiệp",
+          "price": "Liên hệ",
+          "cta": "Gửi yêu cầu",
+          "features": {
+            "branding": "Tùy chỉnh thương hiệu riêng",
+            "api": "API kết nối POS sẵn có",
+            "chain": "Quản lý chuỗi cửa hàng"
+          }
+        }
+      }
+    },
+    "faq": {
+      "title": "Câu hỏi thường gặp",
+      "description": "Một số câu hỏi phổ biến trước khi bắt đầu triển khai tại nhà hàng của bạn.",
+      "items": {
+        "setup": {
+          "question": "Cần mất bao lâu để thiết lập xong hệ thống?",
+          "answer": "Chỉ mất từ 15-30 phút để bạn tải menu và tạo mã QR đầu tiên. Đội ngũ kỹ thuật sẽ hỗ trợ để nhà hàng vận hành trong cùng ngày."
+        },
+        "hardware": {
+          "question": "Tôi có cần mua thêm thiết bị phần cứng gì không?",
+          "answer": "Không cần. Scan Now vận hành trên web, bạn chỉ cần điện thoại hoặc máy tính bảng hiện có để quản lý đơn hàng."
+        },
+        "pricing": {
+          "question": "Chi phí 500k/tháng đã bao gồm tất cả chưa?",
+          "answer": "Gói đã bao gồm hạ tầng lưu trữ, bảo mật và cập nhật tính năng mới. Không có chi phí ẩn phát sinh."
+        },
+        "support": {
+          "question": "Hỗ trợ kỹ thuật như thế nào nếu gặp sự cố?",
+          "answer": "Đội ngũ hỗ trợ 24/7 qua hotline, Zalo và email. Lỗi nghiêm trọng sẽ được ưu tiên xử lý từ xa ngay lập tức."
+        }
+      }
+    },
+    "finalCta": {
+      "title": "Sẵn sàng để đột phá doanh thu nhà hàng?",
+      "description": "Gia nhập cộng đồng hơn 300.000 chủ nhà hàng đã tin dùng Scan Now. Bắt đầu dùng thử miễn phí 14 ngày ngay hôm nay.",
+      "primary": "Bắt đầu ngay miễn phí",
+      "secondary": "Liên hệ tư vấn",
+      "disclaimer": "Không yêu cầu thẻ tín dụng. Hủy bất cứ lúc nào."
+    }
+  }
+}

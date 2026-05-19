@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 import { nav_items } from "@/constants/routers";
 import { scrollToElement } from "@/helpers/scrollToElement";
 import { useFilterShowMenuItems } from "@/hooks/useFilterShowMenuItems";
@@ -8,6 +10,7 @@ import { Button } from "@/ui/button";
 
 export const DesktopNav = () => {
   const menu = useFilterShowMenuItems(nav_items);
+  const t = useTranslations();
 
   return (
     <nav className="border-outline-variant/40 bg-surface-container-low/80 hidden rounded-full border px-1 py-1 md:flex">
@@ -23,7 +26,7 @@ export const DesktopNav = () => {
               : "text-on-surface-variant hover:bg-surface-container-high"
           )}
         >
-          {link.text}
+          {t(link.labelKey as Parameters<typeof t>[0])}
         </Button>
       ))}
     </nav>

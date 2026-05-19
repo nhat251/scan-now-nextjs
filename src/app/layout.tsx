@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import { getLocale } from "next-intl/server";
 
 import { ScrollToTopButton } from "@/components/atoms/scroll-to-top-button";
 import { Footer } from "@/components/molecules/globals/footer";
 import { GlobalLoading } from "@/components/molecules/globals/global-loading";
 import { GlobalToast } from "@/components/molecules/globals/global-toast";
 import { Header } from "@/components/molecules/globals/header";
-import { SITE_CONFIG } from "@/constants/site";
 import { APP_LAYOUT_METADATA } from "@/data/metadataSEO";
 import { NextIntlProvider } from "@/providers/global/next-intl";
 import { ReactQueryProvider } from "@/providers/global/query-client-provider";
@@ -31,13 +31,15 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+
   return (
-    <html lang={SITE_CONFIG.defaultLocale} suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body className={`${inter.variable} font-sans antialiased`}>
         <NextIntlProvider>
           <ReactQueryProvider>

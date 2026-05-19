@@ -1,42 +1,44 @@
 import Link from "next/link";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { Logo } from "@/components/icons/logo";
 
-const companyLinks = [
-  { label: "Về chúng tôi", href: "#" },
-  { label: "Tuyển dụng", href: "#" },
-  { label: "Blog", href: "#" },
-];
-
-const legalLinks = [
-  { label: "Điều khoản", href: "#" },
-  { label: "Bảo mật", href: "#" },
-];
-
-const supportLinks = [
-  { label: "Hỗ trợ khách hàng", href: "#" },
-  { label: "Trung tâm trợ giúp", href: "#" },
-];
-
-export const Footer = () => {
+export const Footer = async () => {
   const currentYear = new Date().getFullYear();
+  const [t, locale] = await Promise.all([getTranslations(), getLocale()]);
+
+  const companyLinks = [
+    { label: t("global.footer.links.about"), href: "#" },
+    { label: t("global.footer.links.careers"), href: "#" },
+    { label: t("global.footer.links.blog"), href: "#" },
+  ];
+
+  const legalLinks = [
+    { label: t("global.footer.links.terms"), href: "#" },
+    { label: t("global.footer.links.privacy"), href: "#" },
+  ];
+
+  const supportLinks = [
+    { label: t("global.footer.links.customerSupport"), href: "#" },
+    { label: t("global.footer.links.helpCenter"), href: "#" },
+  ];
 
   return (
     <footer className="border-outline-variant/40 bg-surface-container-lowest border-t px-5 py-16 md:px-16">
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 md:grid-cols-4 md:gap-8">
         <div className="space-y-5">
-          <Link href="/" className="flex items-center gap-2.5">
+          <Link href={`/${locale}`} className="flex items-center gap-2.5">
             <Logo width="32" height="32" bgColor="var(--primary-container)" />
-            <span className="text-primary text-lg font-bold">Scan Now</span>
+            <span className="text-primary text-lg font-bold">{t("global.brand")}</span>
           </Link>
           <p className="text-on-surface-variant max-w-xs text-sm leading-relaxed">
-            © {currentYear} Scan Now. Giải pháp gọi món thông minh cho nhà hàng hiện đại.
+            © {currentYear} {t("global.brand")}. {t("global.footer.description")}
           </p>
         </div>
 
-        <FooterColumn title="Công ty" links={companyLinks} />
-        <FooterColumn title="Pháp lý" links={legalLinks} />
-        <FooterColumn title="Hỗ trợ" links={supportLinks} />
+        <FooterColumn title={t("global.footer.columns.company")} links={companyLinks} />
+        <FooterColumn title={t("global.footer.columns.legal")} links={legalLinks} />
+        <FooterColumn title={t("global.footer.columns.support")} links={supportLinks} />
       </div>
     </footer>
   );

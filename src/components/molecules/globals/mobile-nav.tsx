@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Menu, X } from "lucide-react";
 
 import { nav_items } from "@/constants/routers";
@@ -11,6 +12,7 @@ import { Button } from "@/ui/button";
 export const MobileNav = () => {
   const [menuState, setMenuState] = useState(false);
   const menu = useFilterShowMenuItems(nav_items);
+  const t = useTranslations();
 
   return (
     <div className="relative md:hidden">
@@ -18,7 +20,7 @@ export const MobileNav = () => {
         onClick={() => setMenuState(!menuState)}
         variant="none"
         className="text-on-surface"
-        aria-label={menuState ? "Close Menu" : "Open Menu"}
+        aria-label={menuState ? t("global.mobileNav.closeMenu") : t("global.mobileNav.openMenu")}
       >
         {menuState ? <X className="size-6" /> : <Menu className="size-6" />}
       </Button>
@@ -36,7 +38,7 @@ export const MobileNav = () => {
                 }}
                 className="text-on-surface-variant hover:text-primary hover:bg-surface-container-low w-full justify-start rounded-xl px-4 py-3 text-left text-sm font-semibold"
               >
-                {link.text}
+                {t(link.labelKey as Parameters<typeof t>[0])}
               </Button>
             ))}
             <Button
@@ -47,7 +49,7 @@ export const MobileNav = () => {
                 setMenuState(false);
               }}
             >
-              Bắt đầu ngay
+              {t("global.mobileNav.startNow")}
             </Button>
           </nav>
         </div>

@@ -1,10 +1,10 @@
-import type { messages } from "@/i18n";
+import type common from "@/i18n/messages/vi/common.json";
 
 import "next-intl";
 
 declare module "next-intl" {
   interface AppConfig {
-    Locale: "vi";
-    Messages: typeof messages;
+    Locale: "vi" | "en";
+    Messages: typeof common;
   }
 }

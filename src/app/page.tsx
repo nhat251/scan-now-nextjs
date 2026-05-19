@@ -1,7 +1,9 @@
-import { SalesLanding } from "@/components/organisms/sales-landing";
+import { redirect } from "next/navigation";
+
+import { SITE_CONFIG } from "@/constants/site";
 
 const RootPage = () => {
-  return <SalesLanding />;
+  redirect(`/${SITE_CONFIG.defaultLocale}`);
 };
 
 export default RootPage;
