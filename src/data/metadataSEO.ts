@@ -71,8 +71,8 @@ const SHARED_METADATA: Partial<Metadata> = {
   referrer: "origin-when-cross-origin",
   metadataBase: new URL(SITE_CONFIG.baseUrl),
   icons: {
-    icon: "/icons/favicon.svg",
-    apple: "/icons/favicon.svg",
+    icon: "/icons/logo-transparent.webp",
+    apple: "/icons/logo-transparent.webp",
   },
   keywords: [
     "Scan Now",

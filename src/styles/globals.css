@@ -175,11 +175,13 @@
   }
 
   html {
+    @apply overflow-x-hidden;
     scroll-behavior: smooth;
   }
 
   body {
     @apply bg-background text-on-background;
+    @apply !min-w-full;
     font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   }
 
