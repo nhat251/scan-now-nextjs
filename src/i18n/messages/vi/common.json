@@ -200,7 +200,53 @@
         "support": {
           "question": "Hỗ trợ kỹ thuật như thế nào nếu gặp sự cố?",
           "answer": "Đội ngũ hỗ trợ 24/7 qua hotline, Zalo và email. Lỗi nghiêm trọng sẽ được ưu tiên xử lý từ xa ngay lập tức."
+        },
+        "payments": {
+          "question": "Có thể tích hợp thanh toán trực tuyến không?",
+          "answer": "Có. Scan Now hỗ trợ tích hợp các cổng thanh toán phổ biến như MoMo, ZaloPay, ShopeePay và các ngân hàng trong nước để khách thanh toán nhanh ngay trên menu số."
+        },
+        "menuLimit": {
+          "question": "Có giới hạn số lượng món ăn trên menu không?",
+          "answer": "Không. Bạn có thể thêm, ẩn hoặc cập nhật món ăn linh hoạt theo thời điểm kinh doanh mà không bị giới hạn số lượng trên các gói mở rộng phù hợp."
+        },
+        "qrDesign": {
+          "question": "Tôi có thể tùy chỉnh thiết kế mã QR không?",
+          "answer": "Có. Chúng tôi có thể hỗ trợ tùy chỉnh màu sắc, logo và phong cách hiển thị để mã QR đồng bộ với nhận diện thương hiệu của nhà hàng."
         }
+      }
+    },
+    "leadForm": {
+      "title": "Đăng ký nhận tư vấn miễn phí",
+      "description": "Để lại số điện thoại và email, đội ngũ Scan Now sẽ liên hệ để tư vấn giải pháp phù hợp cho nhà hàng của bạn.",
+      "fields": {
+        "phone": {
+          "label": "Số điện thoại",
+          "placeholder": "Nhập số điện thoại của bạn"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Nhập email của bạn"
+        },
+        "location": {
+          "label": "Tỉnh/Thành phố",
+          "placeholder": "Chọn tỉnh/thành phố"
+        }
+      },
+      "actions": {
+        "cancel": "Đóng",
+        "submit": "Gửi thông tin",
+        "submitting": "Đang gửi..."
+      },
+      "validation": {
+        "phoneRequired": "Vui lòng nhập số điện thoại.",
+        "phoneInvalid": "Số điện thoại chưa đúng định dạng.",
+        "emailRequired": "Vui lòng nhập email.",
+        "emailInvalid": "Email chưa đúng định dạng.",
+        "locationRequired": "Vui lòng chọn tỉnh/thành phố."
+      },
+      "feedback": {
+        "success": "Đã gửi thông tin thành công. Chúng tôi sẽ liên hệ với bạn sớm nhất.",
+        "error": "Không thể gửi thông tin lúc này. Vui lòng thử lại sau."
       }
     },
     "finalCta": {

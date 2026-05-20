@@ -200,7 +200,53 @@
         "support": {
           "question": "How does technical support work if issues occur?",
           "answer": "Our support team is available 24/7 via hotline, Zalo, and email. Critical issues are prioritized and handled remotely immediately."
+        },
+        "payments": {
+          "question": "Can I integrate online payments?",
+          "answer": "Yes. Scan Now supports popular payment gateways such as MoMo, ZaloPay, ShopeePay, and domestic banks so guests can pay quickly right from the digital menu."
+        },
+        "menuLimit": {
+          "question": "Is there a limit to the number of menu items?",
+          "answer": "No. You can add, hide, or update dishes flexibly as your business changes, with plans that support larger and more dynamic menus."
+        },
+        "qrDesign": {
+          "question": "Can I customize the QR code design?",
+          "answer": "Yes. We can help customize colors, logos, and the visual style so the QR code aligns with your restaurant’s brand identity."
         }
+      }
+    },
+    "leadForm": {
+      "title": "Request a free consultation",
+      "description": "Leave your phone number and email, and the Scan Now team will reach out with the best-fit solution for your restaurant.",
+      "fields": {
+        "phone": {
+          "label": "Phone number",
+          "placeholder": "Enter your phone number"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Enter your email"
+        },
+        "location": {
+          "label": "City",
+          "placeholder": "Select your city"
+        }
+      },
+      "actions": {
+        "cancel": "Close",
+        "submit": "Send details",
+        "submitting": "Sending..."
+      },
+      "validation": {
+        "phoneRequired": "Please enter your phone number.",
+        "phoneInvalid": "Please enter a valid phone number.",
+        "emailRequired": "Please enter your email.",
+        "emailInvalid": "Please enter a valid email address.",
+        "locationRequired": "Please select your city."
+      },
+      "feedback": {
+        "success": "Your details were sent successfully. We’ll contact you soon.",
+        "error": "We couldn’t send your details right now. Please try again later."
       }
     },
     "finalCta": {

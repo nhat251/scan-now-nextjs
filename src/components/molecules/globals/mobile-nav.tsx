@@ -19,14 +19,14 @@ export const MobileNav = () => {
       <Button
         onClick={() => setMenuState(!menuState)}
         variant="none"
-        className="text-on-surface"
+        className="text-on-surface hover:bg-surface-container-low rounded-xl"
         aria-label={menuState ? t("global.mobileNav.closeMenu") : t("global.mobileNav.openMenu")}
       >
         {menuState ? <X className="size-6" /> : <Menu className="size-6" />}
       </Button>
 
       {menuState && (
-        <div className="bg-surface/95 animate-in slide-in-from-top-2 fade-in border-outline-variant/50 absolute top-14 right-0 z-50 w-72 rounded-2xl border p-4 shadow-xl backdrop-blur-md duration-200">
+        <div className="bg-surface/96 animate-in slide-in-from-top-2 fade-in border-border/60 absolute top-14 right-0 z-50 w-72 rounded-3xl border p-4 shadow-2xl backdrop-blur-xl duration-200">
           <nav className="flex flex-col gap-2">
             {menu.map((link) => (
               <Button
@@ -36,7 +36,7 @@ export const MobileNav = () => {
                   scrollToElement(link.id);
                   setMenuState(false);
                 }}
-                className="text-on-surface-variant hover:text-primary hover:bg-surface-container-low w-full justify-start rounded-xl px-4 py-3 text-left text-sm font-semibold"
+                className="text-on-surface-variant hover:text-primary hover:bg-surface-container-low w-full justify-start rounded-2xl px-4 py-3 text-left text-sm font-semibold"
               >
                 {t(link.labelKey as Parameters<typeof t>[0])}
               </Button>
