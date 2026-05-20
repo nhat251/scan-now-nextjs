@@ -53,7 +53,7 @@ export const LanguageSwitcher = () => {
   return (
     <Select value={currentLocale} onValueChange={handleLocaleChange}>
       <SelectTrigger
-        className="h-8 w-fit gap-1 border-dashed px-2 text-xs"
+        className="bg-surface-container-low/70 h-9 w-fit gap-1 rounded-xl border-none px-3 text-xs font-semibold shadow-none"
         aria-label="Select language"
       >
         <SelectValue />
