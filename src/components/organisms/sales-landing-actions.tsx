@@ -84,7 +84,6 @@ const useLeadCapture = () => {
       closeLeadModal();
     } catch {
       showNotify({ type: "error", message: t("leadForm.feedback.error") });
-      throw new Error("Failed to submit lead");
     } finally {
       setIsSubmitting(false);
     }

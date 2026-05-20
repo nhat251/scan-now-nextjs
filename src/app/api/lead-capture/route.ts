@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { z } from "zod";
 
+import { Log } from "@/lib/log";
+
 const resendApiKey = process.env.RESEND_API_KEY;
 const toEmailAddress = process.env.TO_EMAIL_ADDRESS;
 const senderEmailAddress = process.env.SENDER_EMAIL_ADDRESS;
@@ -13,6 +15,14 @@ const leadCaptureSchema = z.object({
   locale: z.enum(["vi", "en"]),
   source: z.enum(["hero-primary", "feature-payment", "final-primary"]),
 });
+
+const escapeHtml = (value: string) =>
+  value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
 
 export async function POST(request: Request) {
   if (!resendApiKey || !toEmailAddress || !senderEmailAddress) {
@@ -28,6 +38,19 @@ export async function POST(request: Request) {
       .split(",")
       .map((email) => email.trim())
       .filter(Boolean);
+
+    if (!recipients.length) {
+      Log.error({
+        prefix: "lead-capture",
+        message: "Lead capture email recipient configuration is empty after parsing TO_EMAIL_ADDRESS",
+      });
+
+      return NextResponse.json({ error: "Missing email configuration" }, { status: 500 });
+    }
+
+    const safePhone = escapeHtml(payload.phone);
+    const safeEmail = escapeHtml(payload.email);
+    const safeLocation = escapeHtml(payload.location);
 
     await resend.emails.send({
       from: senderEmailAddress,
@@ -50,17 +73,17 @@ export async function POST(request: Request) {
               <div style="display: grid; gap: 14px;">
                 <div style="border: 1px solid #e2e8f0; border-radius: 14px; padding: 14px 16px; background-color: #f8fafc;">
                   <p style="margin: 0 0 4px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #64748b;">Phone</p>
-                  <p style="margin: 0; font-size: 16px; font-weight: 600; color: #0f172a;">${payload.phone}</p>
+                  <p style="margin: 0; font-size: 16px; font-weight: 600; color: #0f172a;">${safePhone}</p>
                 </div>
 
                 <div style="border: 1px solid #e2e8f0; border-radius: 14px; padding: 14px 16px; background-color: #f8fafc;">
                   <p style="margin: 0 0 4px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #64748b;">Email</p>
-                  <p style="margin: 0; font-size: 16px; font-weight: 600; color: #0f172a;">${payload.email}</p>
+                  <p style="margin: 0; font-size: 16px; font-weight: 600; color: #0f172a;">${safeEmail}</p>
                 </div>
 
                 <div style="border: 1px solid #e2e8f0; border-radius: 14px; padding: 14px 16px; background-color: #f8fafc;">
                   <p style="margin: 0 0 4px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #64748b;">City</p>
-                  <p style="margin: 0; font-size: 16px; font-weight: 600; color: #0f172a;">${payload.location}</p>
+                  <p style="margin: 0; font-size: 16px; font-weight: 600; color: #0f172a;">${safeLocation}</p>
                 </div>
               </div>
             </div>
@@ -78,6 +101,12 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
+
+    Log.error({
+      prefix: "lead-capture",
+      message: "Unexpected error while sending lead capture email",
+      data: error,
+    });
 
     return NextResponse.json({ error: "Failed to send lead capture email" }, { status: 500 });
   }
