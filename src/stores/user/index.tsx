@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 type UserState = {
   isLogin: boolean;
@@ -9,7 +10,9 @@ type UserInfo = {
   id: string;
   name: string;
   email: string;
-  avatar: string;
+  avatar: string | null;
+  username?: string;
+  role?: string;
 };
 
 type UserStore = UserState & {
@@ -23,13 +26,20 @@ const initialState: UserState = {
   user: null,
 };
 
-export const useUserStore = create<UserStore>((set) => ({
-  ...initialState,
+export const useUserStore = create<UserStore>()(
+  persist(
+    (set) => ({
+      ...initialState,
 
-  login: (user: UserInfo) => set({ isLogin: true, user }),
-  logout: () => set({ ...initialState }),
-  setUser: (user: UserInfo) => set({ user }),
-}));
+      login: (user: UserInfo) => set({ isLogin: true, user }),
+      logout: () => set({ ...initialState }),
+      setUser: (user: UserInfo) => set({ user }),
+    }),
+    {
+      name: "scan-now-user",
+    }
+  )
+);
 
 // Helper functions for usage outside of components
 export const login = (user: UserInfo) => useUserStore.getState().login(user);
