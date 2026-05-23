@@ -58,7 +58,7 @@ export default function AdminCategoryDetailPage({ params }: AdminCategoryDetailP
   return (
     <main className="bg-background min-h-screen">
       <AdminSidebar onLogout={handleLogout} />
-      <div className="flex min-h-screen min-w-0 flex-1 flex-col lg:pl-72">
+      <div className="flex min-h-screen min-w-0 flex-1 flex-col lg:pl-60">
         <AdminTopbar adminUser={adminUser} />
         <div className="flex-1 px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
           <CategoryDetailView branchId={branchId} categoryId={categoryId} restaurantId={restaurantId} />

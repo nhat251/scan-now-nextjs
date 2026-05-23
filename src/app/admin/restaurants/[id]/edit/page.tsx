@@ -82,7 +82,7 @@ export default function AdminEditRestaurantPage({ params }: AdminEditRestaurantP
     return (
       <main className="bg-background min-h-screen">
         <AdminSidebar onLogout={handleLogout} />
-        <div className="flex min-h-screen min-w-0 flex-1 flex-col lg:pl-72">
+        <div className="flex min-h-screen min-w-0 flex-1 flex-col lg:pl-60">
           <AdminTopbar adminUser={adminUser} />
           <div className="flex items-center justify-center py-20">
             <p className="text-muted-foreground text-sm">Loading restaurant data...</p>
@@ -96,7 +96,7 @@ export default function AdminEditRestaurantPage({ params }: AdminEditRestaurantP
     return (
       <main className="bg-background min-h-screen">
         <AdminSidebar onLogout={handleLogout} />
-        <div className="flex min-h-screen min-w-0 flex-1 flex-col lg:pl-72">
+        <div className="flex min-h-screen min-w-0 flex-1 flex-col lg:pl-60">
           <AdminTopbar adminUser={adminUser} />
           <div className="flex flex-col items-center justify-center gap-4 py-20">
             <p className="text-destructive text-sm">Unable to load restaurant data.</p>
@@ -112,7 +112,7 @@ export default function AdminEditRestaurantPage({ params }: AdminEditRestaurantP
   return (
     <main className="bg-background min-h-screen">
       <AdminSidebar onLogout={handleLogout} />
-      <div className="flex min-h-screen min-w-0 flex-1 flex-col lg:pl-72">
+      <div className="flex min-h-screen min-w-0 flex-1 flex-col lg:pl-60">
         <AdminTopbar adminUser={adminUser} />
         <div className="mx-auto w-full max-w-3xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
           <RestaurantForm
