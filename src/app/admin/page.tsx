@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 
 import { AdminLoginCard } from "@/components/admin/admin-login-card";
 import { AdminSidebar } from "@/components/admin/admin-sidebar";
@@ -30,7 +30,6 @@ const getAdminUserFromStore = (user: ReturnType<typeof useUserStore.getState>["u
 export default function AdminPage() {
   const user = useUserStore((state) => state.user);
   const isLogin = useUserStore((state) => state.isLogin);
-  const [refreshKey, setRefreshKey] = useState(0);
 
   const hasToken = typeof window !== "undefined" ? Boolean(localStorage.getItem("jwt")) : false;
   const isAuthorized = hasToken && isLogin;
@@ -41,13 +40,12 @@ export default function AdminPage() {
       localStorage.removeItem("jwt");
     }
     logout();
-    setRefreshKey((value) => value + 1);
   };
 
   if (!isAuthorized) {
     return (
       <main className="bg-background flex min-h-screen items-center justify-center px-4 py-10">
-        <AdminLoginCard onSuccess={() => setRefreshKey((value) => value + 1)} key={refreshKey} />
+        <AdminLoginCard />
       </main>
     );
   }
