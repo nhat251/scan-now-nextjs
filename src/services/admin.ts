@@ -4,14 +4,21 @@ import type {
   AuthResponse,
   BranchListParams,
   BranchRecord,
+  CategoryListParams,
+  CategoryRecord,
   CreateOwnerPayload,
   CreateRestaurantPayload,
   LoginPayload,
+  MenuItemRecord,
+  MenuItemsListParams,
   OwnerListParams,
   OwnerRecord,
   PaginatedBranchesResponse,
+  PaginatedCategoriesResponse,
+  PaginatedMenuItemsResponse,
   PaginatedOwnersResponse,
   PaginatedRestaurantsResponse,
+  PriceHistoryRecord,
   RestaurantListParams,
   RestaurantRecord,
   UpdateOwnerPayload,
@@ -118,5 +125,60 @@ export const getAvailableOwners = async (params: { pageNumber: number; pageSize:
   return await axiosBasic.get<ApiResponse<{ items: OwnerRecord[]; pageNumber: number; pageSize: number; totalItems: number; totalPages: number }>>(
     "/api/admin/users/owners/available",
     { params }
+  );
+};
+
+const buildCategoryParams = (params: CategoryListParams) => {
+  return {
+    PageNumber: params.pageNumber,
+    PageSize: params.pageSize,
+    Search: params.search || undefined,
+    IsActive: params.isActive,
+    SortBy: params.sortBy,
+    SortDirection: params.sortDirection,
+  };
+};
+
+const buildMenuItemsParams = (params: MenuItemsListParams) => {
+  return {
+    PageNumber: params.pageNumber,
+    PageSize: params.pageSize,
+    Search: params.search || undefined,
+    IsActive: params.isActive,
+    IsAvailable: params.isAvailable,
+    IsFeatured: params.isFeatured,
+    CategoryId: params.categoryId,
+    SortBy: params.sortBy,
+    SortDirection: params.sortDirection,
+  };
+};
+
+export const getBranchCategories = async (branchId: string, params: CategoryListParams) => {
+  return await axiosBasic.get<ApiResponse<PaginatedCategoriesResponse>>(
+    `/api/admin/branches/${branchId}/categories`,
+    { params: buildCategoryParams(params) }
+  );
+};
+
+export const getBranchCategoryDetail = async (branchId: string, categoryId: string) => {
+  return await axiosBasic.get<ApiResponse<CategoryRecord>>(
+    `/api/admin/branches/${branchId}/categories/${categoryId}`
+  );
+};
+
+export const getBranchMenuItems = async (branchId: string, params: MenuItemsListParams) => {
+  return await axiosBasic.get<ApiResponse<PaginatedMenuItemsResponse>>(
+    `/api/admin/branches/${branchId}/menu-items`,
+    { params: buildMenuItemsParams(params) }
+  );
+};
+
+export const getMenuItemDetail = async (menuItemId: string) => {
+  return await axiosBasic.get<ApiResponse<MenuItemRecord>>(`/api/admin/menu-items/${menuItemId}`);
+};
+
+export const getMenuItemPriceHistory = async (menuItemId: string) => {
+  return await axiosBasic.get<ApiResponse<PriceHistoryRecord[]>>(
+    `/api/admin/menu-items/${menuItemId}/price-history`
   );
 };

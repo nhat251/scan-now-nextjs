@@ -22,6 +22,7 @@ export const AdminSidebar = ({ onLogout }: AdminSidebarProps) => {
 
   const isActive = (href: string) => {
     if (href === "/admin") return pathname === "/admin";
+    if (href === "/admin/restaurants") return pathname.startsWith("/admin/restaurants") || pathname.startsWith("/admin/branches");
     return pathname.startsWith(href);
   };
 

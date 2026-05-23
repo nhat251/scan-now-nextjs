@@ -33,17 +33,16 @@ export const RestaurantManagementView = ({ isAuthorized }: RestaurantManagementV
   const queryClient = useQueryClient();
   const [search, setSearch] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
   const [status, setStatus] = useState<RestaurantStatusFilter>("all");
 
   const queryParams = useMemo(
     () => ({
       pageNumber,
-      pageSize,
+      pageSize: 10,
       search,
       ...getFilterParams(status),
     }),
-    [pageNumber, pageSize, search, status]
+    [pageNumber, search, status]
   );
 
   const restaurantsQuery = useAdminRestaurantsQuery({ ...queryParams, delay: 400 }, isAuthorized);
@@ -63,11 +62,6 @@ export const RestaurantManagementView = ({ isAuthorized }: RestaurantManagementV
 
   const handleStatusChange = (value: RestaurantStatusFilter) => {
     setStatus(value);
-    setPageNumber(1);
-  };
-
-  const handlePageSizeChange = (value: number) => {
-    setPageSize(value);
     setPageNumber(1);
   };
 
@@ -98,10 +92,8 @@ export const RestaurantManagementView = ({ isAuthorized }: RestaurantManagementV
       <RestaurantFilters
         search={search}
         status={status}
-        pageSize={pageSize}
         onSearchChange={handleSearchChange}
         onStatusChange={handleStatusChange}
-        onPageSizeChange={handlePageSizeChange}
       />
 
       <RestaurantsTable

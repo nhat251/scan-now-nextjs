@@ -6,4 +6,9 @@ export const QUERY_KEY = {
   ADMIN_RESTAURANT_BRANCHES: "admin-restaurant-branches",
   ADMIN_BRANCH_DETAIL: "admin-branch-detail",
   ADMIN_OWNERS_AVAILABLE: "admin-owners-available",
+  ADMIN_BRANCH_CATEGORIES: "admin-branch-categories",
+  ADMIN_BRANCH_CATEGORY_DETAIL: "admin-branch-category-detail",
+  ADMIN_BRANCH_MENU_ITEMS: "admin-branch-menu-items",
+  ADMIN_MENU_ITEM_DETAIL: "admin-menu-item-detail",
+  ADMIN_MENU_ITEM_PRICE_HISTORY: "admin-menu-item-price-history",
 };

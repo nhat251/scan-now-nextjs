@@ -168,3 +168,84 @@ export type AvailableOwnerRecord = {
 };
 
 export type RestaurantStatusFilter = "all" | "active" | "inactive";
+
+export type CategoryRecord = {
+  categoryId: string;
+  branchId: string;
+  branchName: string | null;
+  name: string;
+  description: string | null;
+  imageUrl: string | null;
+  displayOrder: number;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string | null;
+};
+
+export type PaginatedCategoriesResponse = {
+  items: CategoryRecord[];
+  pageNumber: number;
+  pageSize: number;
+  totalItems: number;
+  totalPages: number;
+};
+
+export type CategoryListParams = {
+  pageNumber: number;
+  pageSize: number;
+  search?: string;
+  isActive?: boolean;
+  sortBy?: string;
+  sortDirection?: string;
+};
+
+export type MenuItemRecord = {
+  menuItemId: string;
+  branchId: string;
+  branchName: string | null;
+  categoryId: string;
+  categoryName: string | null;
+  name: string;
+  description: string | null;
+  imageUrl: string | null;
+  price: number;
+  costPrice: number;
+  preparationTime: number;
+  displayOrder: number;
+  isAvailable: boolean;
+  isFeatured: boolean;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string | null;
+};
+
+export type PaginatedMenuItemsResponse = {
+  items: MenuItemRecord[];
+  pageNumber: number;
+  pageSize: number;
+  totalItems: number;
+  totalPages: number;
+};
+
+export type MenuItemsListParams = {
+  pageNumber: number;
+  pageSize: number;
+  search?: string;
+  isActive?: boolean;
+  isAvailable?: boolean;
+  isFeatured?: boolean;
+  categoryId?: string;
+  sortBy?: string;
+  sortDirection?: string;
+};
+
+export type PriceHistoryRecord = {
+  priceHistoryId: string;
+  menuItemId: string;
+  oldPrice: number;
+  newPrice: number;
+  changedById: string;
+  changedByName: string | null;
+  changedAt: string;
+  note: string | null;
+};

@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { EyeIcon, SearchIcon } from "lucide-react";
 
-import { BranchDetailDialog } from "@/components/admin/branch-detail-dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -30,11 +30,10 @@ const formatTime = (value: string | null) => {
 };
 
 export const RestaurantBranchesTab = ({ restaurantId, enabled }: RestaurantBranchesTabProps) => {
+  const router = useRouter();
   const [search, setSearch] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
   const [pageSize] = useState(10);
-  const [selectedBranchId, setSelectedBranchId] = useState<string | null>(null);
-  const [branchDetailOpen, setBranchDetailOpen] = useState(false);
 
   const params: BranchListParams = { pageNumber, pageSize, search };
 
@@ -47,9 +46,8 @@ export const RestaurantBranchesTab = ({ restaurantId, enabled }: RestaurantBranc
   const totalPages = branchesQuery.data?.totalPages ?? 1;
   const totalItems = branchesQuery.data?.totalItems ?? 0;
 
-  const handleViewBranchDetail = (branch: BranchRecord) => {
-    setSelectedBranchId(branch.branchId);
-    setBranchDetailOpen(true);
+  const handleViewBranchSupervision = (branch: BranchRecord) => {
+    router.push(`/admin/branches/${branch.branchId}?restaurantId=${restaurantId}`);
   };
 
   return (
@@ -151,7 +149,7 @@ export const RestaurantBranchesTab = ({ restaurantId, enabled }: RestaurantBranc
                       variant="ghost"
                       size="icon-sm"
                       className="rounded-full"
-                      onClick={() => handleViewBranchDetail(branch)}
+                      onClick={() => handleViewBranchSupervision(branch)}
                     >
                       <EyeIcon className="size-4" />
                     </Button>
@@ -189,15 +187,7 @@ export const RestaurantBranchesTab = ({ restaurantId, enabled }: RestaurantBranc
         </div>
       </div>
 
-      <BranchDetailDialog
-        open={branchDetailOpen}
-        restaurantId={restaurantId}
-        branchId={selectedBranchId}
-        onClose={() => {
-          setBranchDetailOpen(false);
-          setSelectedBranchId(null);
-        }}
-      />
+
     </div>
   );
 };
