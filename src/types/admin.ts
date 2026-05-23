@@ -74,3 +74,97 @@ export type LoginPayload = {
 };
 
 export type OwnerStatusFilter = "all" | "active" | "banned";
+
+export type RestaurantRecord = {
+  restaurantId: string;
+  ownerId: string;
+  ownerName: string;
+  ownerEmail: string;
+  ownerPhone: string | null;
+  name: string;
+  slug: string;
+  logoUrl: string | null;
+  description: string | null;
+  totalBranches: number;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string | null;
+};
+
+export type PaginatedRestaurantsResponse = {
+  items: RestaurantRecord[];
+  pageNumber: number;
+  pageSize: number;
+  totalItems: number;
+  totalPages: number;
+};
+
+export type RestaurantListParams = {
+  pageNumber: number;
+  pageSize: number;
+  search?: string;
+  isActive?: boolean;
+  sortBy?: string;
+  sortDirection?: string;
+};
+
+export type CreateRestaurantPayload = {
+  ownerId: string;
+  name: string;
+  slug: string;
+  logoUrl?: string | null;
+  description?: string | null;
+};
+
+export type UpdateRestaurantPayload = {
+  name: string;
+  slug: string;
+  logoUrl?: string | null;
+  description?: string | null;
+};
+
+export type BranchRecord = {
+  branchId: string;
+  restaurantId: string;
+  managerId: string | null;
+  managerName: string | null;
+  name: string;
+  slug: string;
+  address: string | null;
+  phone: string | null;
+  email: string | null;
+  openTime: string | null;
+  closeTime: string | null;
+  isActive: boolean;
+  vatPercent: number;
+  serviceChargePercent: number;
+  serviceChargeFixed: number;
+  createdAt: string;
+  updatedAt: string | null;
+};
+
+export type PaginatedBranchesResponse = {
+  items: BranchRecord[];
+  pageNumber: number;
+  pageSize: number;
+  totalItems: number;
+  totalPages: number;
+};
+
+export type BranchListParams = {
+  pageNumber: number;
+  pageSize: number;
+  search?: string;
+  isActive?: boolean;
+  sortBy?: string;
+  sortDirection?: string;
+};
+
+export type AvailableOwnerRecord = {
+  userId: string;
+  fullName: string;
+  email: string;
+  phoneNumber: string | null;
+};
+
+export type RestaurantStatusFilter = "all" | "active" | "inactive";
