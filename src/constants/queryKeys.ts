@@ -1,4 +1,17 @@
 export const QUERY_KEY = {
   SAMPLE: "sample",
   ADMIN_OWNERS: "admin-owners",
+  ADMIN_RESTAURANTS: "admin-restaurants",
+  ADMIN_RESTAURANT_DETAIL: "admin-restaurant-detail",
+  ADMIN_RESTAURANT_BRANCHES: "admin-restaurant-branches",
+  ADMIN_BRANCH_DETAIL: "admin-branch-detail",
+  ADMIN_OWNERS_AVAILABLE: "admin-owners-available",
+  ADMIN_BRANCH_CATEGORIES: "admin-branch-categories",
+  ADMIN_BRANCH_CATEGORY_DETAIL: "admin-branch-category-detail",
+  ADMIN_BRANCH_MENU_ITEMS: "admin-branch-menu-items",
+  ADMIN_MENU_ITEM_DETAIL: "admin-menu-item-detail",
+  ADMIN_MENU_ITEM_PRICE_HISTORY: "admin-menu-item-price-history",
+  ADMIN_BRANCH_TABLES: "admin-branch-tables",
+  ADMIN_BRANCH_TABLE_DETAIL: "admin-branch-table-detail",
+  ADMIN_BRANCH_SESSIONS: "admin-branch-sessions",
 };

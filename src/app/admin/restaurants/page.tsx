@@ -5,14 +5,13 @@ import { useMemo } from "react";
 import { AdminLoginCard } from "@/components/admin/admin-login-card";
 import { AdminSidebar } from "@/components/admin/admin-sidebar";
 import { AdminTopbar } from "@/components/admin/admin-topbar";
-import { OwnerManagementView } from "@/components/admin/owner-management-view";
+import { RestaurantManagementView } from "@/components/admin/restaurant-management-view";
 import { Button } from "@/components/ui/button";
 import { logout, useUserStore } from "@/stores/user";
 import type { AdminUser } from "@/types/admin";
 
 const getAdminUserFromStore = (user: ReturnType<typeof useUserStore.getState>["user"]): AdminUser | null => {
   if (!user) return null;
-
   return {
     id: user.id,
     email: user.email,
@@ -27,7 +26,7 @@ const getAdminUserFromStore = (user: ReturnType<typeof useUserStore.getState>["u
   };
 };
 
-export default function AdminPage() {
+export default function AdminRestaurantsPage() {
   const user = useUserStore((state) => state.user);
   const isLogin = useUserStore((state) => state.isLogin);
 
@@ -36,9 +35,7 @@ export default function AdminPage() {
   const adminUser = useMemo(() => getAdminUserFromStore(user), [user]);
 
   const handleLogout = () => {
-    if (typeof window !== "undefined") {
-      localStorage.removeItem("jwt");
-    }
+    if (typeof window !== "undefined") localStorage.removeItem("jwt");
     logout();
   };
 
@@ -56,7 +53,7 @@ export default function AdminPage() {
       <div className="flex min-h-screen min-w-0 flex-1 flex-col lg:pl-60">
         <AdminTopbar adminUser={adminUser} />
         <div className="flex-1 px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
-          <OwnerManagementView isAuthorized={isAuthorized} />
+          <RestaurantManagementView isAuthorized={isAuthorized} />
         </div>
         <div className="border-border/60 border-t px-4 py-4 text-right sm:px-6 lg:hidden">
           <Button variant="ghost" className="text-destructive" onClick={handleLogout}>

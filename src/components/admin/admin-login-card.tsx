@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { LoaderCircle, LockKeyholeIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -21,12 +20,7 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
-type AdminLoginCardProps = {
-  onSuccess: () => void;
-};
-
-export const AdminLoginCard = ({ onSuccess }: AdminLoginCardProps) => {
-  const router = useRouter();
+export const AdminLoginCard = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const {
@@ -63,8 +57,7 @@ export const AdminLoginCard = ({ onSuccess }: AdminLoginCardProps) => {
         });
       }
 
-      onSuccess();
-      router.refresh();
+      window.location.href = "/admin";
     } catch {
       setErrorMessage("Unable to sign in with the provided admin credentials.");
     } finally {
