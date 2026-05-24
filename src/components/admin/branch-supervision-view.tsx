@@ -13,15 +13,15 @@ import { useAdminBranchDetailQuery } from "@/hooks/queries/useAdminBranchDetailQ
 import { cn } from "@/lib/utils";
 
 type BranchSupervisionViewProps = {
-  branchId: string;
-  restaurantId: string | null;
+  branchIdentifier: string;
+  restaurantIdentifier: string | null;
 };
 
-export const BranchSupervisionView = ({ branchId, restaurantId }: BranchSupervisionViewProps) => {
+export const BranchSupervisionView = ({ branchIdentifier, restaurantIdentifier }: BranchSupervisionViewProps) => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("overview");
 
-  const branchQuery = useAdminBranchDetailQuery(restaurantId, branchId, Boolean(restaurantId));
+  const branchQuery = useAdminBranchDetailQuery(restaurantIdentifier, branchIdentifier, Boolean(restaurantIdentifier));
 
   if (branchQuery.isLoading) {
     return (
@@ -55,6 +55,9 @@ export const BranchSupervisionView = ({ branchId, restaurantId }: BranchSupervis
     );
   }
 
+  const branchId = branch.branchId;
+  const restaurantSlug = restaurantIdentifier;
+
   return (
     <div className="space-y-6 lg:space-y-8">
       <div className="flex items-center gap-4">
@@ -62,7 +65,7 @@ export const BranchSupervisionView = ({ branchId, restaurantId }: BranchSupervis
           variant="ghost"
           size="icon"
           className="rounded-full"
-          onClick={() => router.push(`/admin/restaurants/${restaurantId}`)}
+          onClick={() => router.push(`/admin/restaurants/${restaurantSlug}`)}
         >
           <ArrowLeftIcon className="size-5" />
         </Button>
@@ -96,11 +99,11 @@ export const BranchSupervisionView = ({ branchId, restaurantId }: BranchSupervis
         {activeTab === "overview" ? (
           <BranchOverviewTab branch={branch} />
         ) : activeTab === "categories" ? (
-          <BranchCategoriesTab branchId={branchId} restaurantId={restaurantId} enabled={activeTab === "categories"} />
+          <BranchCategoriesTab branchId={branchId} branchSlug={branch.slug} restaurantSlug={restaurantSlug} enabled={activeTab === "categories"} />
         ) : activeTab === "menu-items" ? (
           <BranchMenuItemsTab branchId={branchId} enabled={activeTab === "menu-items"} />
         ) : (
-          <BranchTablesTab branchId={branchId} enabled={activeTab === "tables"} />
+          <BranchTablesTab branchId={branchId} branchSlug={branch.slug} restaurantSlug={restaurantSlug} enabled={activeTab === "tables"} />
         )}
       </div>
     </div>

@@ -63,6 +63,10 @@ const buildBranchParams = (params: BranchListParams) => {
   };
 };
 
+const guidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+const isGuid = (value: string) => guidPattern.test(value);
+
 export const loginAdmin = async (payload: LoginPayload) => {
   return await axiosBasic.post<ApiResponse<AuthResponse>>("/api/auth/login", payload);
 };
@@ -99,6 +103,14 @@ export const getRestaurantById = async (id: string) => {
   return await axiosBasic.get<ApiResponse<RestaurantRecord>>(`/api/admin/restaurants/${id}`);
 };
 
+export const getRestaurantBySlug = async (slug: string) => {
+  return await axiosBasic.get<ApiResponse<RestaurantRecord>>(`/api/admin/restaurants/by-slug/${encodeURIComponent(slug)}`);
+};
+
+export const getRestaurantDetail = (identifier: string) => {
+  return isGuid(identifier) ? getRestaurantById(identifier) : getRestaurantBySlug(identifier);
+};
+
 export const createRestaurant = async (payload: CreateRestaurantPayload) => {
   return await axiosBasic.post<ApiResponse<RestaurantRecord>>("/api/admin/restaurants", payload);
 };
@@ -121,8 +133,32 @@ export const getRestaurantBranches = async (restaurantId: string, params: Branch
   });
 };
 
+export const getRestaurantBranchesBySlug = async (restaurantSlug: string, params: BranchListParams) => {
+  return await axiosBasic.get<ApiResponse<PaginatedBranchesResponse>>(`/api/admin/restaurants/by-slug/${encodeURIComponent(restaurantSlug)}/branches`, {
+    params: buildBranchParams(params),
+  });
+};
+
+export const getRestaurantBranchesByIdentifier = (restaurantIdentifier: string, params: BranchListParams) => {
+  return isGuid(restaurantIdentifier)
+    ? getRestaurantBranches(restaurantIdentifier, params)
+    : getRestaurantBranchesBySlug(restaurantIdentifier, params);
+};
+
 export const getBranchDetail = async (restaurantId: string, branchId: string) => {
   return await axiosBasic.get<ApiResponse<BranchRecord>>(`/api/admin/restaurants/${restaurantId}/branches/${branchId}`);
+};
+
+export const getBranchDetailBySlug = async (restaurantSlug: string, branchSlug: string) => {
+  return await axiosBasic.get<ApiResponse<BranchRecord>>(
+    `/api/admin/restaurants/by-slug/${encodeURIComponent(restaurantSlug)}/branches/${encodeURIComponent(branchSlug)}`
+  );
+};
+
+export const getBranchDetailByIdentifier = (restaurantIdentifier: string, branchIdentifier: string) => {
+  return isGuid(restaurantIdentifier) && isGuid(branchIdentifier)
+    ? getBranchDetail(restaurantIdentifier, branchIdentifier)
+    : getBranchDetailBySlug(restaurantIdentifier, branchIdentifier);
 };
 
 export const getAvailableOwners = async (params: { pageNumber: number; pageSize: number }) => {

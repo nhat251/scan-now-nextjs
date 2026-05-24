@@ -22,7 +22,8 @@ import type { CategoryListParams, CategoryRecord } from "@/types/admin";
 
 type BranchCategoriesTabProps = {
   branchId: string;
-  restaurantId: string | null;
+  branchSlug: string;
+  restaurantSlug: string | null;
   enabled: boolean;
 };
 
@@ -30,7 +31,7 @@ const formatDate = (value: string) => {
   return new Intl.DateTimeFormat("en-GB", { dateStyle: "medium" }).format(new Date(value));
 };
 
-export const BranchCategoriesTab = ({ branchId, restaurantId, enabled }: BranchCategoriesTabProps) => {
+export const BranchCategoriesTab = ({ branchId, branchSlug, restaurantSlug, enabled }: BranchCategoriesTabProps) => {
   const router = useRouter();
   const [search, setSearch] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
@@ -54,9 +55,9 @@ export const BranchCategoriesTab = ({ branchId, restaurantId, enabled }: BranchC
   const totalItems = categoriesQuery.data?.totalItems ?? 0;
 
   const handleViewCategory = (category: CategoryRecord) => {
-    const href = restaurantId
-      ? `/admin/branches/${branchId}/categories/${category.categoryId}?restaurantId=${restaurantId}`
-      : `/admin/branches/${branchId}/categories/${category.categoryId}`;
+    const href = restaurantSlug
+      ? `/admin/branches/${branchSlug}/categories/${category.categoryId}?restaurantSlug=${restaurantSlug}&branchId=${branchId}`
+      : `/admin/branches/${branchSlug}/categories/${category.categoryId}?branchId=${branchId}`;
     router.push(href);
   };
 

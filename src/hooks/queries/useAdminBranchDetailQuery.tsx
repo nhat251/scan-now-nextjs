@@ -2,20 +2,20 @@
 
 import { QUERY_KEY } from "@/constants/queryKeys";
 import useQuery from "@/hooks/useQuery";
-import { getBranchDetail } from "@/services/admin";
+import { getBranchDetailByIdentifier } from "@/services/admin";
 import type { BranchRecord } from "@/types/admin";
 
 export const useAdminBranchDetailQuery = (
-  restaurantId: string | null,
-  branchId: string | null,
+  restaurantIdentifier: string | null,
+  branchIdentifier: string | null,
   enabled = true
 ) => {
   return useQuery<BranchRecord, BranchRecord>({
-    queryKey: [QUERY_KEY.ADMIN_BRANCH_DETAIL, String(restaurantId), String(branchId)],
+    queryKey: [QUERY_KEY.ADMIN_BRANCH_DETAIL, String(restaurantIdentifier), String(branchIdentifier)],
     queryFn: async () => {
-      const response = await getBranchDetail(restaurantId!, branchId!);
+      const response = await getBranchDetailByIdentifier(restaurantIdentifier!, branchIdentifier!);
       return response.data.result;
     },
-    enabled: enabled && Boolean(restaurantId) && Boolean(branchId),
+    enabled: enabled && Boolean(restaurantIdentifier) && Boolean(branchIdentifier),
   });
 };

@@ -54,8 +54,9 @@ export default function AdminEditRestaurantPage({ params }: AdminEditRestaurantP
 
   const handleSave = async (values: { ownerId: string; name: string; slug: string; logoUrl?: string | undefined; description?: string | undefined }) => {
     try {
+      const restaurantId = restaurantQuery.data?.restaurantId || id;
       const response = await updateRestaurantMutation.mutateAsync({
-        id,
+        id: restaurantId,
         payload: {
           name: values.name,
           slug: values.slug,
@@ -64,7 +65,7 @@ export default function AdminEditRestaurantPage({ params }: AdminEditRestaurantP
         },
       });
       showNotify({ type: "success", message: response.message || "Restaurant updated successfully" });
-      router.push(`/admin/restaurants/${id}`);
+      router.push(`/admin/restaurants/${response.result.slug}`);
     } catch {
       showNotify({ type: "error", message: "Failed to update restaurant." });
     }
@@ -120,7 +121,7 @@ export default function AdminEditRestaurantPage({ params }: AdminEditRestaurantP
             availableOwners={[]}
             isSubmitting={updateRestaurantMutation.isPending}
             onSave={handleSave}
-            onCancel={() => router.push(`/admin/restaurants/${id}`)}
+            onCancel={() => router.push(`/admin/restaurants/${restaurantQuery.data.slug}`)}
           />
         </div>
       </div>

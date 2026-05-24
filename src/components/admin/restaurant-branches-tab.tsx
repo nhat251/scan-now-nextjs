@@ -20,7 +20,7 @@ import { useAdminRestaurantBranchesQuery } from "@/hooks/queries/useAdminRestaur
 import type { BranchListParams, BranchRecord } from "@/types/admin";
 
 type RestaurantBranchesTabProps = {
-  restaurantId: string;
+  restaurantSlug: string;
   enabled: boolean;
 };
 
@@ -29,7 +29,7 @@ const formatTime = (value: string | null) => {
   return value.slice(0, 5);
 };
 
-export const RestaurantBranchesTab = ({ restaurantId, enabled }: RestaurantBranchesTabProps) => {
+export const RestaurantBranchesTab = ({ restaurantSlug, enabled }: RestaurantBranchesTabProps) => {
   const router = useRouter();
   const [search, setSearch] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
@@ -38,7 +38,7 @@ export const RestaurantBranchesTab = ({ restaurantId, enabled }: RestaurantBranc
   const params: BranchListParams = { pageNumber, pageSize, search };
 
   const branchesQuery = useAdminRestaurantBranchesQuery(
-    { restaurantId, ...params },
+    { restaurantIdentifier: restaurantSlug, ...params },
     enabled
   );
 
@@ -47,7 +47,7 @@ export const RestaurantBranchesTab = ({ restaurantId, enabled }: RestaurantBranc
   const totalItems = branchesQuery.data?.totalItems ?? 0;
 
   const handleViewBranchSupervision = (branch: BranchRecord) => {
-    router.push(`/admin/branches/${branch.branchId}?restaurantId=${restaurantId}`);
+    router.push(`/admin/branches/${branch.slug}?restaurantSlug=${restaurantSlug}`);
   };
 
   return (

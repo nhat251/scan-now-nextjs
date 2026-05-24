@@ -3,16 +3,16 @@
 import { QUERY_KEY } from "@/constants/queryKeys";
 import { useDebounce } from "@/hooks/useDebounce";
 import useQuery from "@/hooks/useQuery";
-import { getRestaurantBranches } from "@/services/admin";
+import { getRestaurantBranchesByIdentifier } from "@/services/admin";
 import type { BranchListParams, PaginatedBranchesResponse } from "@/types/admin";
 
 type UseAdminRestaurantBranchesQueryParams = BranchListParams & {
-  restaurantId: string;
+  restaurantIdentifier: string;
   delay?: number;
 };
 
 export const useAdminRestaurantBranchesQuery = (
-  { restaurantId, delay = 400, search, ...params }: UseAdminRestaurantBranchesQueryParams,
+  { restaurantIdentifier, delay = 400, search, ...params }: UseAdminRestaurantBranchesQueryParams,
   enabled = true
 ) => {
   const debouncedSearch = useDebounce(search || "", delay);
@@ -20,16 +20,16 @@ export const useAdminRestaurantBranchesQuery = (
   return useQuery<PaginatedBranchesResponse, PaginatedBranchesResponse>({
     queryKey: [
       QUERY_KEY.ADMIN_RESTAURANT_BRANCHES,
-      restaurantId,
+      restaurantIdentifier,
       String(params.pageNumber),
       String(params.pageSize),
       debouncedSearch,
       params.isActive === undefined ? "any" : String(params.isActive),
     ],
     queryFn: async () => {
-      const response = await getRestaurantBranches(restaurantId, { ...params, search: debouncedSearch });
+      const response = await getRestaurantBranchesByIdentifier(restaurantIdentifier, { ...params, search: debouncedSearch });
       return response.data.result;
     },
-    enabled: enabled && Boolean(restaurantId),
+    enabled: enabled && Boolean(restaurantIdentifier),
   });
 };

@@ -15,10 +15,12 @@ import { useQueryClient } from "@tanstack/react-query";
 
 type BranchTablesTabProps = {
   branchId: string;
+  branchSlug: string;
+  restaurantSlug: string | null;
   enabled: boolean;
 };
 
-export const BranchTablesTab = ({ branchId, enabled }: BranchTablesTabProps) => {
+export const BranchTablesTab = ({ branchId, branchSlug, restaurantSlug, enabled }: BranchTablesTabProps) => {
   const queryClient = useQueryClient();
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState<string>("all");
@@ -93,6 +95,8 @@ export const BranchTablesTab = ({ branchId, enabled }: BranchTablesTabProps) => 
       {activeView === "tables" ? (
         <BranchTablesGrid
           branchId={branchId}
+          branchSlug={branchSlug}
+          restaurantSlug={restaurantSlug}
           search={search}
           status={status}
           pageNumber={pageNumber}

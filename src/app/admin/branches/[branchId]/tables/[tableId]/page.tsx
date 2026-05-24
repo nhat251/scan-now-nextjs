@@ -1,6 +1,7 @@
 "use client";
 
 import { use, useMemo } from "react";
+import { useSearchParams } from "next/navigation";
 
 import { AdminLoginCard } from "@/components/admin/admin-login-card";
 import { AdminSidebar } from "@/components/admin/admin-sidebar";
@@ -32,6 +33,9 @@ type AdminTableDetailPageProps = {
 
 export default function AdminTableDetailPage({ params }: AdminTableDetailPageProps) {
   const { branchId, tableId } = use(params);
+  const searchParams = useSearchParams();
+  const branchApiId = searchParams.get("branchId") || branchId;
+  const restaurantIdentifier = searchParams.get("restaurantSlug") || searchParams.get("restaurantId");
   const user = useUserStore((state) => state.user);
   const isLogin = useUserStore((state) => state.isLogin);
 
@@ -58,7 +62,12 @@ export default function AdminTableDetailPage({ params }: AdminTableDetailPagePro
       <div className="flex min-h-screen min-w-0 flex-1 flex-col lg:pl-60">
         <AdminTopbar adminUser={adminUser} />
         <div className="flex-1 px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
-          <TableDetailView branchId={branchId} tableId={tableId} />
+          <TableDetailView
+            branchId={branchApiId}
+            branchIdentifier={branchId}
+            restaurantIdentifier={restaurantIdentifier}
+            tableId={tableId}
+          />
         </div>
         <div className="border-border/60 border-t px-4 py-4 text-right sm:px-6 lg:hidden">
           <Button variant="ghost" className="text-destructive" onClick={handleLogout}>

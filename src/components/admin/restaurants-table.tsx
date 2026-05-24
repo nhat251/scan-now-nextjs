@@ -147,7 +147,7 @@ export const RestaurantsTable = ({
                         variant="ghost"
                         size="icon-sm"
                         className="rounded-full"
-                        onClick={() => router.push(`/admin/restaurants/${restaurant.restaurantId}`)}
+                        onClick={() => router.push(`/admin/restaurants/${restaurant.slug}`)}
                       >
                         <EyeIcon className="size-4" />
                       </Button>

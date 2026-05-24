@@ -10,8 +10,9 @@ import { cn } from "@/lib/utils";
 
 type CategoryDetailViewProps = {
   branchId: string;
+  branchIdentifier: string;
   categoryId: string;
-  restaurantId: string | null;
+  restaurantIdentifier: string | null;
 };
 
 const formatDate = (value: string) => {
@@ -30,15 +31,15 @@ const DetailRow = ({ icon: Icon, label, value, className }: { icon: React.Elemen
   </div>
 );
 
-export const CategoryDetailView = ({ branchId, categoryId, restaurantId }: CategoryDetailViewProps) => {
+export const CategoryDetailView = ({ branchId, branchIdentifier, categoryId, restaurantIdentifier }: CategoryDetailViewProps) => {
   const router = useRouter();
 
   const categoryQuery = useAdminBranchCategoryDetailQuery(branchId, categoryId, true);
 
   const handleBack = () => {
-    const href = restaurantId
-      ? `/admin/branches/${branchId}?restaurantId=${restaurantId}`
-      : `/admin/branches/${branchId}`;
+    const href = restaurantIdentifier
+      ? `/admin/branches/${branchIdentifier}?restaurantSlug=${restaurantIdentifier}`
+      : `/admin/branches/${branchIdentifier}`;
     router.push(href);
   };
 

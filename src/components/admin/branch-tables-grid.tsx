@@ -21,6 +21,8 @@ const formatTime = (value: string) => {
 
 type BranchTablesGridProps = {
   branchId: string;
+  branchSlug: string;
+  restaurantSlug: string | null;
   search: string;
   status: string;
   pageNumber: number;
@@ -28,7 +30,7 @@ type BranchTablesGridProps = {
   enabled: boolean;
 };
 
-export const BranchTablesGrid = ({ branchId, search, status, pageNumber, onPageChange, enabled }: BranchTablesGridProps) => {
+export const BranchTablesGrid = ({ branchId, branchSlug, restaurantSlug, search, status, pageNumber, onPageChange, enabled }: BranchTablesGridProps) => {
   const router = useRouter();
 
   const params: TableListParams = {
@@ -110,7 +112,12 @@ export const BranchTablesGrid = ({ branchId, search, status, pageNumber, onPageC
                   variant="ghost"
                   size="icon-sm"
                   className="rounded-full"
-                  onClick={() => router.push(`/admin/branches/${branchId}/tables/${table.tableId}`)}
+                  onClick={() => {
+                    const query = restaurantSlug
+                      ? `branchId=${branchId}&restaurantSlug=${restaurantSlug}`
+                      : `branchId=${branchId}`;
+                    router.push(`/admin/branches/${branchSlug}/tables/${table.tableId}?${query}`);
+                  }}
                 >
                   <EyeIcon className="size-4" />
                 </Button>

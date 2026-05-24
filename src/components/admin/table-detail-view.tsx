@@ -11,6 +11,8 @@ import { cn } from "@/lib/utils";
 
 type TableDetailViewProps = {
   branchId: string;
+  branchIdentifier: string;
+  restaurantIdentifier: string | null;
   tableId: string;
 };
 
@@ -41,10 +43,16 @@ const DetailRow = ({ icon: Icon, label, value, className, iconClass }: { icon: R
   </div>
 );
 
-export const TableDetailView = ({ branchId, tableId }: TableDetailViewProps) => {
+export const TableDetailView = ({ branchId, branchIdentifier, restaurantIdentifier, tableId }: TableDetailViewProps) => {
   const router = useRouter();
 
   const tableQuery = useAdminBranchTableDetailQuery(branchId, tableId, true);
+  const handleBack = () => {
+    const query = restaurantIdentifier
+      ? `branchId=${branchId}&restaurantSlug=${restaurantIdentifier}`
+      : `branchId=${branchId}`;
+    router.push(`/admin/branches/${branchIdentifier}?${query}`);
+  };
 
   if (tableQuery.isLoading) {
     return (
@@ -58,7 +66,7 @@ export const TableDetailView = ({ branchId, tableId }: TableDetailViewProps) => 
     return (
       <div className="flex flex-col items-center justify-center gap-4 py-20">
         <p className="text-destructive text-sm">Unable to load table details.</p>
-        <Button variant="outline" className="rounded-xl" onClick={() => router.push(`/admin/branches/${branchId}`)}>
+        <Button variant="outline" className="rounded-xl" onClick={handleBack}>
           Back to Branch
         </Button>
       </div>
@@ -71,7 +79,7 @@ export const TableDetailView = ({ branchId, tableId }: TableDetailViewProps) => 
     return (
       <div className="flex flex-col items-center justify-center gap-4 py-20">
         <p className="text-muted-foreground text-sm">Table not found.</p>
-        <Button variant="outline" className="rounded-xl" onClick={() => router.push(`/admin/branches/${branchId}`)}>
+        <Button variant="outline" className="rounded-xl" onClick={handleBack}>
           Back to Branch
         </Button>
       </div>
@@ -87,7 +95,7 @@ export const TableDetailView = ({ branchId, tableId }: TableDetailViewProps) => 
           variant="ghost"
           size="icon"
           className="rounded-full"
-          onClick={() => router.push(`/admin/branches/${branchId}`)}
+          onClick={handleBack}
         >
           <ArrowLeftIcon className="size-5" />
         </Button>

@@ -11,14 +11,14 @@ import { useAdminRestaurantDetailQuery } from "@/hooks/queries/useAdminRestauran
 import { cn } from "@/lib/utils";
 
 type RestaurantDetailViewProps = {
-  restaurantId: string;
+  restaurantIdentifier: string;
 };
 
-export const RestaurantDetailView = ({ restaurantId }: RestaurantDetailViewProps) => {
+export const RestaurantDetailView = ({ restaurantIdentifier }: RestaurantDetailViewProps) => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("overview");
 
-  const restaurantQuery = useAdminRestaurantDetailQuery(restaurantId, true);
+  const restaurantQuery = useAdminRestaurantDetailQuery(restaurantIdentifier, true);
 
   if (restaurantQuery.isLoading) {
     return (
@@ -74,7 +74,7 @@ export const RestaurantDetailView = ({ restaurantId }: RestaurantDetailViewProps
         <Button
           size="lg"
           className="rounded-2xl"
-          onClick={() => router.push(`/admin/restaurants/${restaurantId}/edit`)}
+          onClick={() => router.push(`/admin/restaurants/${restaurant.slug}/edit`)}
         >
           <PencilIcon className="size-4" />
           Edit Restaurant
@@ -103,7 +103,7 @@ export const RestaurantDetailView = ({ restaurantId }: RestaurantDetailViewProps
         {activeTab === "overview" ? (
           <RestaurantOverviewTab restaurant={restaurant} />
         ) : (
-          <RestaurantBranchesTab restaurantId={restaurantId} enabled={activeTab === "branches"} />
+          <RestaurantBranchesTab restaurantSlug={restaurant.slug} enabled={activeTab === "branches"} />
         )}
       </div>
     </div>

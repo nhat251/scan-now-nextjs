@@ -34,7 +34,8 @@ type AdminCategoryDetailPageProps = {
 export default function AdminCategoryDetailPage({ params }: AdminCategoryDetailPageProps) {
   const { branchId, categoryId } = use(params);
   const searchParams = useSearchParams();
-  const restaurantId = searchParams.get("restaurantId");
+  const branchApiId = searchParams.get("branchId") || branchId;
+  const restaurantIdentifier = searchParams.get("restaurantSlug") || searchParams.get("restaurantId");
   const user = useUserStore((state) => state.user);
   const isLogin = useUserStore((state) => state.isLogin);
 
@@ -61,7 +62,12 @@ export default function AdminCategoryDetailPage({ params }: AdminCategoryDetailP
       <div className="flex min-h-screen min-w-0 flex-1 flex-col lg:pl-60">
         <AdminTopbar adminUser={adminUser} />
         <div className="flex-1 px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
-          <CategoryDetailView branchId={branchId} categoryId={categoryId} restaurantId={restaurantId} />
+          <CategoryDetailView
+            branchId={branchApiId}
+            branchIdentifier={branchId}
+            categoryId={categoryId}
+            restaurantIdentifier={restaurantIdentifier}
+          />
         </div>
         <div className="border-border/60 border-t px-4 py-4 text-right sm:px-6 lg:hidden">
           <Button variant="ghost" className="text-destructive" onClick={handleLogout}>

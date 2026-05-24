@@ -34,7 +34,7 @@ type AdminBranchSupervisionPageProps = {
 export default function AdminBranchSupervisionPage({ params }: AdminBranchSupervisionPageProps) {
   const { branchId } = use(params);
   const searchParams = useSearchParams();
-  const restaurantId = searchParams.get("restaurantId");
+  const restaurantIdentifier = searchParams.get("restaurantSlug") || searchParams.get("restaurantId");
   const user = useUserStore((state) => state.user);
   const isLogin = useUserStore((state) => state.isLogin);
 
@@ -61,7 +61,7 @@ export default function AdminBranchSupervisionPage({ params }: AdminBranchSuperv
       <div className="flex min-h-screen min-w-0 flex-1 flex-col lg:pl-60">
         <AdminTopbar adminUser={adminUser} />
         <div className="flex-1 px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
-          <BranchSupervisionView branchId={branchId} restaurantId={restaurantId} />
+          <BranchSupervisionView branchIdentifier={branchId} restaurantIdentifier={restaurantIdentifier} />
         </div>
         <div className="border-border/60 border-t px-4 py-4 text-right sm:px-6 lg:hidden">
           <Button variant="ghost" className="text-destructive" onClick={handleLogout}>
