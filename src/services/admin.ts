@@ -18,9 +18,13 @@ import type {
   PaginatedMenuItemsResponse,
   PaginatedOwnersResponse,
   PaginatedRestaurantsResponse,
+  PaginatedTablesResponse,
   PriceHistoryRecord,
   RestaurantListParams,
   RestaurantRecord,
+  SessionRecord,
+  TableListParams,
+  TableRecord,
   UpdateOwnerPayload,
   UpdateRestaurantPayload,
 } from "@/types/admin";
@@ -180,5 +184,36 @@ export const getMenuItemDetail = async (menuItemId: string) => {
 export const getMenuItemPriceHistory = async (menuItemId: string) => {
   return await axiosBasic.get<ApiResponse<PriceHistoryRecord[]>>(
     `/api/admin/menu-items/${menuItemId}/price-history`
+  );
+};
+
+const buildTableParams = (params: TableListParams) => {
+  return {
+    PageNumber: params.pageNumber,
+    PageSize: params.pageSize,
+    Search: params.search || undefined,
+    Status: params.status,
+    IsActive: params.isActive,
+    SortBy: params.sortBy,
+    SortDirection: params.sortDirection,
+  };
+};
+
+export const getBranchTables = async (branchId: string, params: TableListParams) => {
+  return await axiosBasic.get<ApiResponse<PaginatedTablesResponse>>(
+    `/api/admin/branches/${branchId}/tables`,
+    { params: buildTableParams(params) }
+  );
+};
+
+export const getBranchTableDetail = async (branchId: string, tableId: string) => {
+  return await axiosBasic.get<ApiResponse<TableRecord>>(
+    `/api/admin/branches/${branchId}/tables/${tableId}`
+  );
+};
+
+export const getBranchSessions = async (branchId: string) => {
+  return await axiosBasic.get<ApiResponse<SessionRecord[]>>(
+    `/api/admin/branches/${branchId}/sessions`
   );
 };

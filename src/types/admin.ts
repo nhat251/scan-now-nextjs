@@ -249,3 +249,59 @@ export type PriceHistoryRecord = {
   changedAt: string;
   note: string | null;
 };
+
+export type TableStatus = 0 | 1 | 2 | 3;
+
+export type QrSessionRecord = {
+  sessionId: string;
+  tableId: string;
+  branchId: string;
+  sessionCode: string;
+  isActive: boolean;
+  expiresAt: string;
+  createdAt: string;
+  updatedAt: string | null;
+};
+
+export type TableRecord = {
+  tableId: string;
+  branchId: string;
+  branchName: string;
+  tableNumber: string;
+  capacity: number;
+  status: TableStatus;
+  isActive: boolean;
+  currentSession: QrSessionRecord | null;
+  createdAt: string;
+  updatedAt: string | null;
+};
+
+export type PaginatedTablesResponse = {
+  items: TableRecord[];
+  pageNumber: number;
+  pageSize: number;
+  totalItems: number;
+  totalPages: number;
+};
+
+export type TableListParams = {
+  pageNumber: number;
+  pageSize: number;
+  search?: string;
+  status?: TableStatus;
+  isActive?: boolean;
+  sortBy?: string;
+  sortDirection?: string;
+};
+
+export type SessionRecord = {
+  sessionId: string;
+  sessionCode: string;
+  branchId: string;
+  branchName: string;
+  tableId: string;
+  tableNumber: string;
+  openedAt: string;
+  expiresAt: string;
+  isActive: boolean;
+};

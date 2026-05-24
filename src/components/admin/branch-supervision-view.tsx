@@ -7,6 +7,7 @@ import { ArrowLeftIcon } from "lucide-react";
 import { BranchCategoriesTab } from "@/components/admin/branch-categories-tab";
 import { BranchMenuItemsTab } from "@/components/admin/branch-menu-items-tab";
 import { BranchOverviewTab } from "@/components/admin/branch-overview-tab";
+import { BranchTablesTab } from "@/components/admin/branch-tables-tab";
 import { Button } from "@/components/ui/button";
 import { useAdminBranchDetailQuery } from "@/hooks/queries/useAdminBranchDetailQuery";
 import { cn } from "@/lib/utils";
@@ -74,7 +75,7 @@ export const BranchSupervisionView = ({ branchId, restaurantId }: BranchSupervis
       </div>
 
       <div className="border-border/60 bg-surface-container-lowest inline-flex items-center rounded-2xl border p-1 shadow-sm">
-        {["overview", "categories", "menu-items"].map((tab) => (
+        {["overview", "categories", "menu-items", "tables"].map((tab) => (
           <button
             key={tab}
             type="button"
@@ -86,7 +87,7 @@ export const BranchSupervisionView = ({ branchId, restaurantId }: BranchSupervis
                 : "text-muted-foreground hover:text-on-surface"
             )}
           >
-            {tab === "overview" ? "Overview" : tab === "categories" ? "Categories" : "Menu Items"}
+            {tab === "overview" ? "Overview" : tab === "categories" ? "Categories" : tab === "menu-items" ? "Menu Items" : "Tables"}
           </button>
         ))}
       </div>
@@ -96,8 +97,10 @@ export const BranchSupervisionView = ({ branchId, restaurantId }: BranchSupervis
           <BranchOverviewTab branch={branch} />
         ) : activeTab === "categories" ? (
           <BranchCategoriesTab branchId={branchId} restaurantId={restaurantId} enabled={activeTab === "categories"} />
-        ) : (
+        ) : activeTab === "menu-items" ? (
           <BranchMenuItemsTab branchId={branchId} enabled={activeTab === "menu-items"} />
+        ) : (
+          <BranchTablesTab branchId={branchId} enabled={activeTab === "tables"} />
         )}
       </div>
     </div>

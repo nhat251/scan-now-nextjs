@@ -11,4 +11,7 @@ export const QUERY_KEY = {
   ADMIN_BRANCH_MENU_ITEMS: "admin-branch-menu-items",
   ADMIN_MENU_ITEM_DETAIL: "admin-menu-item-detail",
   ADMIN_MENU_ITEM_PRICE_HISTORY: "admin-menu-item-price-history",
+  ADMIN_BRANCH_TABLES: "admin-branch-tables",
+  ADMIN_BRANCH_TABLE_DETAIL: "admin-branch-table-detail",
+  ADMIN_BRANCH_SESSIONS: "admin-branch-sessions",
 };
