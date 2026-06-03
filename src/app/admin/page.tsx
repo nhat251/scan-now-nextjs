@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 
+import { AdminDashboardReport } from "@/components/admin/admin-dashboard-report";
 import { AdminLoginCard } from "@/components/admin/admin-login-card";
 import { AdminSidebar } from "@/components/admin/admin-sidebar";
 import { AdminTopbar } from "@/components/admin/admin-topbar";
@@ -56,6 +57,7 @@ export default function AdminPage() {
       <div className="flex min-h-screen min-w-0 flex-1 flex-col lg:pl-60">
         <AdminTopbar adminUser={adminUser} />
         <div className="flex-1 px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+          <AdminDashboardReport enabled={isAuthorized} />
           <OwnerManagementView isAuthorized={isAuthorized} />
         </div>
         <div className="border-border/60 border-t px-4 py-4 text-right sm:px-6 lg:hidden">

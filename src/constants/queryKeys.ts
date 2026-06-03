@@ -14,4 +14,5 @@ export const QUERY_KEY = {
   ADMIN_BRANCH_TABLES: "admin-branch-tables",
   ADMIN_BRANCH_TABLE_DETAIL: "admin-branch-table-detail",
   ADMIN_BRANCH_SESSIONS: "admin-branch-sessions",
+  ADMIN_DASHBOARD_REPORT: "admin-dashboard-report",
 };

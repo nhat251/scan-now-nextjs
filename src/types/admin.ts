@@ -305,3 +305,20 @@ export type SessionRecord = {
   expiresAt: string;
   isActive: boolean;
 };
+
+export type AdminReportPoint = {
+  label: string;
+  date: string | null;
+  revenue: number;
+  orders: number;
+};
+
+export type AdminDashboardReportResponse = {
+  totalUsers: number;
+  totalRestaurants: number;
+  totalBranches: number;
+  totalOrders: number;
+  totalRevenue: number;
+  platformGrowth: AdminReportPoint[];
+  revenueByMonth: AdminReportPoint[];
+};

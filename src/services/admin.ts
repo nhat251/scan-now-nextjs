@@ -1,5 +1,6 @@
 import { axiosBasic } from "@/services/axiosBasic";
 import type {
+  AdminDashboardReportResponse,
   ApiResponse,
   AuthResponse,
   BranchListParams,
@@ -252,4 +253,8 @@ export const getBranchSessions = async (branchId: string) => {
   return await axiosBasic.get<ApiResponse<SessionRecord[]>>(
     `/api/admin/branches/${branchId}/sessions`
   );
+};
+
+export const getAdminDashboardReport = async () => {
+  return await axiosBasic.get<ApiResponse<AdminDashboardReportResponse>>("/api/admin/reports/dashboard");
 };
