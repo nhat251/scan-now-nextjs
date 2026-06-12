@@ -7,7 +7,7 @@ export const SITE_CONFIG = {
   /**
    * Base URL of the website (used for SEO, sitemap, etc.)
    */
-  baseUrl: "https://finmate.fun",
+  baseUrl: "https://scannow.site",
 
   /**
    * Default locale for the site
