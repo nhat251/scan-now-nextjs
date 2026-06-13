@@ -127,7 +127,7 @@ export const RestaurantForm = ({
         <div className="grid gap-5 sm:grid-cols-2">
           {!isEdit ? (
             <div className="space-y-2 sm:col-span-2">
-              <Label htmlFor="restaurant-owner">Owner</Label>
+              <Label htmlFor="restaurant-owner" required>Owner</Label>
               <Select
                 value={selectedOwnerId}
                 onValueChange={(value) => setValue("ownerId", value)}
@@ -164,7 +164,7 @@ export const RestaurantForm = ({
           ) : null}
 
           <div className="space-y-2">
-            <Label htmlFor="restaurant-name">Restaurant name</Label>
+            <Label htmlFor="restaurant-name" required>Restaurant name</Label>
             <Input
               id="restaurant-name"
               className="h-11 rounded-xl"
@@ -177,7 +177,7 @@ export const RestaurantForm = ({
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="restaurant-slug">Slug</Label>
+            <Label htmlFor="restaurant-slug" required>Slug</Label>
             <Input id="restaurant-slug" className="h-11 rounded-xl" {...register("slug")} />
             {errors.slug ? (
               <p className="text-destructive text-sm">{errors.slug.message}</p>
