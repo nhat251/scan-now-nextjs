@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { EyeIcon, SearchIcon } from "lucide-react";
+import { useForm, useWatch } from "react-hook-form";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -31,9 +32,19 @@ const formatTime = (value: string | null) => {
 
 export const RestaurantBranchesTab = ({ restaurantSlug, enabled }: RestaurantBranchesTabProps) => {
   const router = useRouter();
-  const [search, setSearch] = useState("");
+  const { control, setValue } = useForm({
+    defaultValues: {
+      search: "",
+    },
+  });
+
+  const search = useWatch({ control, name: "search" });
   const [pageNumber, setPageNumber] = useState(1);
   const [pageSize] = useState(10);
+
+  useEffect(() => {
+    setPageNumber(1);
+  }, [search]);
 
   const params: BranchListParams = { pageNumber, pageSize, search };
 
@@ -58,10 +69,7 @@ export const RestaurantBranchesTab = ({ restaurantSlug, enabled }: RestaurantBra
             <SearchIcon className="text-muted-foreground absolute top-1/2 left-4 size-4 -translate-y-1/2" />
             <Input
               value={search}
-              onChange={(e) => {
-                setSearch(e.target.value);
-                setPageNumber(1);
-              }}
+              onChange={(e) => setValue("search", e.target.value)}
               placeholder="Search branches by name, address, or phone"
               className="bg-background border-border/60 h-11 rounded-2xl pl-11"
             />

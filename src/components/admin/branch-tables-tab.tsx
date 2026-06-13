@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RefreshCcwIcon } from "lucide-react";
+import { useForm, useWatch } from "react-hook-form";
 
 import { BranchActiveSessionsTab } from "@/components/admin/branch-active-sessions-tab";
 import { BranchTablesGrid } from "@/components/admin/branch-tables-grid";
@@ -22,10 +23,21 @@ type BranchTablesTabProps = {
 
 export const BranchTablesTab = ({ branchId, branchSlug, restaurantSlug, enabled }: BranchTablesTabProps) => {
   const queryClient = useQueryClient();
-  const [search, setSearch] = useState("");
-  const [status, setStatus] = useState<string>("all");
+  const { control, setValue } = useForm({
+    defaultValues: {
+      search: "",
+      status: "all",
+    },
+  });
+
+  const search = useWatch({ control, name: "search" });
+  const status = useWatch({ control, name: "status" });
   const [pageNumber, setPageNumber] = useState(1);
   const [activeView, setActiveView] = useState("tables");
+
+  useEffect(() => {
+    setPageNumber(1);
+  }, [search, status]);
 
   const invalidateTables = () => {
     queryClient.invalidateQueries({ queryKey: [QUERY_KEY.ADMIN_BRANCH_TABLES, branchId] });
@@ -39,17 +51,14 @@ export const BranchTablesTab = ({ branchId, branchSlug, restaurantSlug, enabled 
           <div className="relative w-full max-w-md">
             <Input
               value={search}
-              onChange={(e) => {
-                setSearch(e.target.value);
-                setPageNumber(1);
-              }}
+              onChange={(e) => setValue("search", e.target.value)}
               placeholder="Search by table number"
               className="bg-background border-border/60 h-10 rounded-2xl pl-4"
             />
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-            <Select value={status} onValueChange={(v) => { setStatus(v); setPageNumber(1); }}>
+            <Select value={status} onValueChange={(v) => setValue("status", v)}>
               <SelectTrigger className="bg-background border-border/60 h-10 min-w-36 rounded-2xl">
                 <SelectValue placeholder="Status" />
               </SelectTrigger>

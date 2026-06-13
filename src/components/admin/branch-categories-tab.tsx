@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowDownNarrowWideIcon, ArrowUpNarrowWideIcon, EyeIcon, SearchIcon } from "lucide-react";
+import { useForm, useWatch } from "react-hook-form";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -33,11 +34,24 @@ const formatDate = (value: string) => {
 
 export const BranchCategoriesTab = ({ branchId, branchSlug, restaurantSlug, enabled }: BranchCategoriesTabProps) => {
   const router = useRouter();
-  const [search, setSearch] = useState("");
+  const { control, setValue } = useForm({
+    defaultValues: {
+      search: "",
+      isActive: "all",
+      sortBy: "name",
+      sortDirection: "asc",
+    },
+  });
+
+  const search = useWatch({ control, name: "search" });
+  const isActive = useWatch({ control, name: "isActive" });
+  const sortBy = useWatch({ control, name: "sortBy" });
+  const sortDirection = useWatch({ control, name: "sortDirection" });
   const [pageNumber, setPageNumber] = useState(1);
-  const [isActive, setIsActive] = useState<string>("all");
-  const [sortBy, setSortBy] = useState<string>("name");
-  const [sortDirection, setSortDirection] = useState<string>("asc");
+
+  useEffect(() => {
+    setPageNumber(1);
+  }, [search, isActive]);
 
   const params: CategoryListParams = {
     pageNumber,
@@ -69,17 +83,14 @@ export const BranchCategoriesTab = ({ branchId, branchSlug, restaurantSlug, enab
             <SearchIcon className="text-muted-foreground absolute top-1/2 left-4 size-4 -translate-y-1/2" />
             <Input
               value={search}
-              onChange={(e) => {
-                setSearch(e.target.value);
-                setPageNumber(1);
-              }}
+              onChange={(e) => setValue("search", e.target.value)}
               placeholder="Search categories by name"
               className="bg-background border-border/60 h-10 rounded-2xl pl-11"
             />
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-            <Select value={isActive} onValueChange={(v) => { setIsActive(v); setPageNumber(1); }}>
+            <Select value={isActive} onValueChange={(v) => setValue("isActive", v)}>
               <SelectTrigger className="bg-background border-border/60 h-10 min-w-36 rounded-2xl">
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
@@ -90,7 +101,7 @@ export const BranchCategoriesTab = ({ branchId, branchSlug, restaurantSlug, enab
               </SelectContent>
             </Select>
 
-            <Select value={sortBy} onValueChange={setSortBy}>
+            <Select value={sortBy} onValueChange={(v) => setValue("sortBy", v)}>
               <SelectTrigger className="bg-background border-border/60 h-10 min-w-40 rounded-2xl">
                 <SelectValue placeholder="Sort by" />
               </SelectTrigger>
@@ -106,7 +117,7 @@ export const BranchCategoriesTab = ({ branchId, branchSlug, restaurantSlug, enab
               variant="outline"
               size="icon"
               className="border-border/60 h-10 w-10 rounded-xl"
-              onClick={() => setSortDirection((d) => (d === "asc" ? "desc" : "asc"))}
+              onClick={() => setValue("sortDirection", sortDirection === "asc" ? "desc" : "asc")}
             >
               {sortDirection === "asc" ? (
                 <ArrowUpNarrowWideIcon className="size-4" />

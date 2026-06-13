@@ -14,6 +14,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -102,9 +103,9 @@ export const LeadCaptureModal = ({ open, onClose, onSubmit, isSubmitting }: Lead
 
           <form className="space-y-4" onSubmit={handleFormSubmit}>
             <div className="space-y-2">
-              <label htmlFor="lead-phone" className="text-on-surface text-sm font-semibold">
+              <Label htmlFor="lead-phone" required className="text-on-surface text-sm font-semibold">
                 {t("fields.phone.label")}
-              </label>
+              </Label>
               <div className="relative">
                 <Phone className="text-on-surface-variant absolute top-1/2 left-3 size-4 -translate-y-1/2" />
                 <Input
@@ -120,9 +121,9 @@ export const LeadCaptureModal = ({ open, onClose, onSubmit, isSubmitting }: Lead
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="lead-email" className="text-on-surface text-sm font-semibold">
+              <Label htmlFor="lead-email" required className="text-on-surface text-sm font-semibold">
                 {t("fields.email.label")}
-              </label>
+              </Label>
               <div className="relative">
                 <Mail className="text-on-surface-variant absolute top-1/2 left-3 size-4 -translate-y-1/2" />
                 <Input
@@ -138,9 +139,9 @@ export const LeadCaptureModal = ({ open, onClose, onSubmit, isSubmitting }: Lead
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="lead-location" className="text-on-surface text-sm font-semibold">
+              <Label htmlFor="lead-location" required className="text-on-surface text-sm font-semibold">
                 {t("fields.location.label")}
-              </label>
+              </Label>
               <Controller
                 control={control}
                 name="location"
