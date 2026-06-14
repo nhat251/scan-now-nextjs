@@ -79,13 +79,13 @@ export const AdminLoginCard = () => {
       <CardContent>
         <form className="space-y-4" onSubmit={onSubmit}>
           <div className="space-y-2">
-            <Label htmlFor="identifier">Email or username</Label>
+            <Label htmlFor="identifier" required>Email or username</Label>
             <Input id="identifier" className="h-11 rounded-xl" {...register("identifier")} />
             {errors.identifier ? <p className="text-destructive text-sm">{errors.identifier.message}</p> : null}
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password" required>Password</Label>
             <Input id="password" type="password" className="h-11 rounded-xl" {...register("password")} />
             {errors.password ? <p className="text-destructive text-sm">{errors.password.message}</p> : null}
           </div>

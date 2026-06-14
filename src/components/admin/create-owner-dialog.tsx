@@ -151,13 +151,13 @@ export const CreateOwnerDialog = ({
 
           <form className="grid gap-4 sm:grid-cols-2" onSubmit={onSubmit}>
             <div className="space-y-2 sm:col-span-2">
-              <Label htmlFor="owner-full-name">Full name</Label>
+              <Label htmlFor="owner-full-name" required>Full name</Label>
               <Input id="owner-full-name" className="h-11 rounded-xl" {...register("fullName")} />
               {errors.fullName ? <p className="text-destructive text-sm">{errors.fullName.message}</p> : null}
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="owner-username">Username</Label>
+              <Label htmlFor="owner-username" required>Username</Label>
               <Input id="owner-username" className="h-11 rounded-xl" {...register("username")} />
               {errors.username ? <p className="text-destructive text-sm">{errors.username.message}</p> : null}
             </div>
@@ -169,14 +169,14 @@ export const CreateOwnerDialog = ({
             </div>
 
             <div className="space-y-2 sm:col-span-2">
-              <Label htmlFor="owner-email">Email</Label>
+              <Label htmlFor="owner-email" required>Email</Label>
               <Input id="owner-email" type="email" className="h-11 rounded-xl" {...register("email")} />
               {errors.email ? <p className="text-destructive text-sm">{errors.email.message}</p> : null}
             </div>
 
             {!isEdit ? (
               <div className="space-y-2 sm:col-span-2">
-                <Label htmlFor="owner-password">Password</Label>
+                <Label htmlFor="owner-password" required>Password</Label>
                 <Input id="owner-password" type="password" className="h-11 rounded-xl" {...register("password")} />
                 {errors.password ? <p className="text-destructive text-sm">{errors.password.message}</p> : null}
               </div>
