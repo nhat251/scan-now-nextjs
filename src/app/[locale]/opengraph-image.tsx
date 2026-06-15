@@ -29,7 +29,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
   // 1. Load the logo image file and convert to PNG Base64 Data URL using sharp helper
   let logoBase64 = "";
   try {
-    logoBase64 = await loadImageAsPngDataUrl("/icons/logo-transparent.webp");
+    logoBase64 = await loadImageAsPngDataUrl("/icons/logo-transparent.png");
   } catch (error) {
     console.error("Failed to read logo file:", error);
   }

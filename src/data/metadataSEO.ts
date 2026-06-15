@@ -27,11 +27,11 @@ const LOCALE_METADATA: Record<
       "Scan Now giúp hơn 300.000 nhà hàng F&B tăng tốc phục vụ, giảm thất thoát và tạo trải nghiệm gọi món hiện đại. Khách quét QR tại bàn, gọi món và thanh toán trực tiếp — setup chỉ 15 phút.",
     ogTitle: "Scan Now — Giải pháp gọi món thông minh cho nhà hàng hiện đại",
     ogDescription:
-      "Tăng tốc phục vụ, giảm thất thoát và nâng cao trải nghiệm khách hàng với phần mềm gọi món QR Scan Now. Dùng thử miễn phí 14 ngày.",
+      "Tăng tốc phục vụ, giảm thất thoát và nâng cao trải nghiệm khách hàng với phần mềm gọi món QR Scan Now.",
     ogLocale: "vi_VN",
     twitterTitle: "Scan Now — Phần mềm gọi món QR cho nhà hàng F&B",
     twitterDescription:
-      "Hơn 300.000 nhà hàng tin dùng. Quét QR, gọi món, thanh toán — setup 15 phút. Dùng thử miễn phí 14 ngày.",
+      "Hơn 300.000 nhà hàng tin dùng. Quét QR, gọi món, thanh toán — setup 15 phút.",
     ogImageAlt: "Scan Now — Phần mềm gọi món QR thông minh cho nhà hàng",
     canonicalUrl: `${SITE_CONFIG.baseUrl}/vi`,
   },
@@ -41,11 +41,11 @@ const LOCALE_METADATA: Record<
       "Scan Now helps 300,000+ F&B businesses speed up service, reduce losses, and deliver a modern ordering experience. Guests scan QR at table, order and pay directly — setup in 15 minutes.",
     ogTitle: "Scan Now — Smart Restaurant Ordering Management Software",
     ogDescription:
-      "Speed up service, cut losses, and enhance customer experience with Scan Now QR ordering software. Start your 14-day free trial today.",
+      "Speed up service, cut losses, and enhance customer experience with Scan Now QR ordering software.",
     ogLocale: "en_US",
     twitterTitle: "Scan Now — Smart QR Ordering Software for F&B",
     twitterDescription:
-      "Trusted by 300,000+ restaurants. Scan QR, order, pay — setup in 15 min. Free 14-day trial.",
+      "Trusted by 300,000+ restaurants. Scan QR, order, pay — setup in 15 min.",
     ogImageAlt: "Scan Now — Smart QR Ordering Software for Restaurants",
     canonicalUrl: `${SITE_CONFIG.baseUrl}/en`,
   },
@@ -71,8 +71,8 @@ const SHARED_METADATA: Partial<Metadata> = {
   referrer: "origin-when-cross-origin",
   metadataBase: new URL(SITE_CONFIG.baseUrl),
   icons: {
-    icon: "/icons/logo-transparent.webp",
-    apple: "/icons/logo-transparent.webp",
+    icon: "/icons/logo-transparent.png",
+    apple: "/icons/logo-transparent.png",
   },
   keywords: [
     "Scan Now",
@@ -116,7 +116,7 @@ const SHARED_METADATA: Partial<Metadata> = {
     siteName: "Scan Now",
     images: [
       {
-        url: "/icons/logo-transparent.webp",
+        url: "/icons/logo-transparent.png",
         width: 1200,
         height: 630,
       },
@@ -125,7 +125,7 @@ const SHARED_METADATA: Partial<Metadata> = {
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/icons/logo-transparent.webp"],
+    images: ["/icons/logo-transparent.png"],
   },
   appleWebApp: {
     title: "Scan Now",
@@ -198,7 +198,7 @@ export function getLocaleMetadata(locale: SupportedLocale): Metadata {
       siteName: "Scan Now",
       images: [
         {
-          url: "/icons/logo-transparent.webp",
+          url: "/icons/logo-transparent.png",
           width: 1200,
           height: 630,
           alt: meta.ogImageAlt,
@@ -211,7 +211,7 @@ export function getLocaleMetadata(locale: SupportedLocale): Metadata {
       card: "summary_large_image",
       title: meta.twitterTitle,
       description: meta.twitterDescription,
-      images: ["/icons/logo-transparent.webp"],
+      images: ["/icons/logo-transparent.png"],
     },
     appleWebApp: SHARED_METADATA.appleWebApp,
   };
