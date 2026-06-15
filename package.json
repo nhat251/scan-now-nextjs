@@ -7,12 +7,6 @@
     "node": ">=22.0.0",
     "pnpm": ">=10.0.0"
   },
-  "pnpm": {
-    "supportedArchitectures": {
-      "os": ["current", "linux"],
-      "cpu": ["current", "x64"]
-    }
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
