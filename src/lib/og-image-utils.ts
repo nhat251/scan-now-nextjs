@@ -7,7 +7,7 @@ export async function loadImageAsPngDataUrl(url: string): Promise<string> {
       const ab = await fetch(url).then((r) => r.arrayBuffer());
       return Buffer.from(new Uint8Array(ab));
     }
-    return await readLocalFile(url);
+    return Buffer.from(await readLocalFile(url));
   })();
 
   return `data:image/png;base64,${buffer.toString("base64")}`;
