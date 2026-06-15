@@ -26,7 +26,14 @@ export const OGImageTemplate = ({ title, description, logoBase64 }: OGImageTempl
       }}
     >
       {/* Top row: Brand header */}
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          width: "100%",
+        }}
+      >
         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -147,23 +154,50 @@ export const OGImageTemplate = ({ title, description, logoBase64 }: OGImageTempl
           width: "100%",
         }}
       >
-        <div style={{ display: "flex", gap: "24px", color: "#6b7280", fontSize: "15px", fontWeight: 400 }}>
+        <div
+          style={{
+            display: "flex",
+            gap: "24px",
+            color: "#6b7280",
+            fontSize: "15px",
+            fontWeight: 400,
+          }}
+        >
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <div style={{ width: "8px", height: "8px", borderRadius: "4px", backgroundColor: "#10b981" }} />
+            <div
+              style={{
+                width: "8px",
+                height: "8px",
+                borderRadius: "4px",
+                backgroundColor: "#10b981",
+              }}
+            />
             <span>Setup 15 mins</span>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <div style={{ width: "8px", height: "8px", borderRadius: "4px", backgroundColor: "#10b981" }} />
+            <div
+              style={{
+                width: "8px",
+                height: "8px",
+                borderRadius: "4px",
+                backgroundColor: "#10b981",
+              }}
+            />
             <span>QR Ordering</span>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <div style={{ width: "8px", height: "8px", borderRadius: "4px", backgroundColor: "#10b981" }} />
+            <div
+              style={{
+                width: "8px",
+                height: "8px",
+                borderRadius: "4px",
+                backgroundColor: "#10b981",
+              }}
+            />
             <span>300,000+ Restaurants</span>
           </div>
         </div>
-        <span style={{ fontSize: "18px", fontWeight: 700, color: "#ff5c00" }}>
-          scan-now.vn
-        </span>
+        <span style={{ fontSize: "18px", fontWeight: 700, color: "#ff5c00" }}>scannow.site</span>
       </div>
     </div>
   );
