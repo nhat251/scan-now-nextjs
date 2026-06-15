@@ -5,7 +5,6 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
-  output: "standalone",
   // cho cms run local
   images: {
     remotePatterns: [
